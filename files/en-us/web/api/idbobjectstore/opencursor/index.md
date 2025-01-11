@@ -1,20 +1,12 @@
 ---
-title: IDBObjectStore.openCursor()
+title: "IDBObjectStore: openCursor() method"
+short-title: openCursor()
 slug: Web/API/IDBObjectStore/openCursor
 page-type: web-api-instance-method
-tags:
-  - API
-  - Database
-  - IDBObjectStore
-  - IndexedDB
-  - Method
-  - Reference
-  - Storage
-  - openCursor
 browser-compat: api.IDBObjectStore.openCursor
 ---
 
-{{ APIRef("IndexedDB") }}
+{{ APIRef("IndexedDB") }} {{AvailableInWorkers}}
 
 The **`openCursor()`** method of the
 {{domxref("IDBObjectStore")}} interface returns an {{domxref("IDBRequest")}} object,
@@ -23,8 +15,6 @@ Used for iterating through an object store with a cursor.
 
 To determine if the add operation has completed successfully, listen for the results's
 `success` event.
-
-{{AvailableInWorkers}}
 
 ## Syntax
 
@@ -49,16 +39,20 @@ openCursor(query, direction)
       - : The cursor is opened at the start of the store; then, the cursor returns all records, that are not duplicates,
         in the increasing order of keys.
     - `prev`
-      - : The cursor is opened at the start of the store; then, the cursor returns all records, even duplicates,
+      - : The cursor is opened at the end of the store; then, the cursor returns all records, even duplicates,
         in the decreasing order of keys.
     - `prevunique`
-      - : The cursor is opened at the start of the store; then, the cursor returns all records, that are not duplicates,
+      - : The cursor is opened at the end of the store; then, the cursor returns all records, that are not duplicates,
         in the decreasing order of keys.
 
 ### Return value
 
-An {{domxref("IDBRequest")}} object on which subsequent events related to this
-operation are fired.
+An {{domxref("IDBRequest")}} object on which subsequent events related to this operation are fired.
+
+If the operation is successful, the value of the request's {{domxref("IDBRequest.result", "result")}} property is:
+
+- an {{domxref("IDBCursorWithValue")}} object pointing at the first record matching the given query
+- `null` if no matching records were found.
 
 ### Exceptions
 

@@ -1,11 +1,7 @@
 ---
-title: 'null'
+title: "null"
 slug: Web/JavaScript/Reference/Operators/null
-tags:
-  - JavaScript
-  - Language feature
-  - Literal
-  - Primitive
+page-type: javascript-language-feature
 browser-compat: javascript.operators.null
 ---
 
@@ -27,7 +23,7 @@ null
 
 The value `null` is written with a literal: `null`.
 `null` is not an identifier for a property of the global object, like
-{{jsxref("Global_Objects/undefined","undefined")}} can be. Instead,
+{{jsxref("undefined")}} can be. Instead,
 `null` expresses a lack of identification, indicating that a variable points
 to no object. In APIs, `null` is often retrieved in a place where an object
 can be expected but no object is relevant.
@@ -51,15 +47,15 @@ When checking for `null` or `undefined`, beware of the [differences between equa
 type-conversion.
 
 ```js
-typeof null          // "object" (not "null" for legacy reasons)
-typeof undefined     // "undefined"
-null === undefined   // false
-null  == undefined   // true
-null === null        // true
-null  == null        // true
-!null                // true
-isNaN(1 + null)      // false
-isNaN(1 + undefined) // true
+typeof null; // "object" (not "null" for legacy reasons)
+typeof undefined; // "undefined"
+null === undefined; // false
+null == undefined; // true
+null === null; // true
+null == null; // true
+!null; // true
+Number.isNaN(1 + null); // false
+Number.isNaN(1 + undefined); // true
 ```
 
 ## Specifications

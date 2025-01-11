@@ -1,19 +1,11 @@
 ---
 title: browserAction.isEnabled()
 slug: Mozilla/Add-ons/WebExtensions/API/browserAction/isEnabled
-tags:
-  - API
-  - Add-ons
-  - Extensions
-  - Method
-  - Reference
-  - WebExtensions
-  - browserAction
-  - isEnabled
+page-type: webextension-api-function
 browser-compat: webextensions.api.browserAction.isEnabled
 ---
 
-{{AddonSidebar()}}
+{{AddonSidebar}}
 
 Returns `true` if the browser action is enabled.
 

@@ -2,15 +2,8 @@
 title: element()
 slug: Web/CSS/element
 page-type: css-function
-tags:
-  - CSS
-  - CSS Function
-  - CSS images
-  - Function
-  - Layout
-  - Reference
-  - Web
-  - Experimental
+status:
+  - experimental
 browser-compat: css.types.image.element
 ---
 
@@ -32,6 +25,10 @@ where:
 
 - _id_
   - : The ID of an element to use as the background, specified using the HTML attribute #_id_ on the element.
+
+## Formal syntax
+
+{{CSSSyntax}}
 
 ## Examples
 
@@ -107,6 +104,5 @@ the `<div id="css-source">` inside `<div id="css-result">`.
 - {{cssxref("image/image-set", "image-set()")}}
 - {{cssxref("&lt;image&gt;")}}
 - {{cssxref("&lt;gradient&gt;")}}
-- {{cssxref("element", "element()")}}
 - {{cssxref("cross-fade", "cross-fade()")}}
 - {{domxref("document.mozSetImageElement()")}}

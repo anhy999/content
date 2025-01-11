@@ -1,18 +1,11 @@
 ---
 title: permissions.getAll()
 slug: Mozilla/Add-ons/WebExtensions/API/permissions/getAll
-tags:
-  - API
-  - Add-ons
-  - Method
-  - Permissions
-  - Reference
-  - WebExtensions
-  - getAll
+page-type: webextension-api-function
 browser-compat: webextensions.api.permissions.getAll
 ---
 
-{{AddonSidebar()}}
+{{AddonSidebar}}
 
 Retrieve a {{WebExtAPIRef("permissions.Permissions")}} object containing all the permissions currently granted to the extension.
 
@@ -50,4 +43,5 @@ console.log(currentPermissions.origins); // [ "*://*.mozilla.org/*" ]
 
 {{WebExtExamples}}
 
-> **Note:** This API is based on Chromium's [`chrome.permissions`](https://developer.chrome.com/docs/extensions/reference/permissions/) API.
+> [!NOTE]
+> This API is based on Chromium's [`chrome.permissions`](https://developer.chrome.com/docs/extensions/reference/api/permissions) API.

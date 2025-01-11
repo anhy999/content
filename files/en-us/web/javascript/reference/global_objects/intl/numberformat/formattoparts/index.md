@@ -1,37 +1,26 @@
 ---
 title: Intl.NumberFormat.prototype.formatToParts()
 slug: Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/formatToParts
-tags:
-  - Internationalization
-  - Intl
-  - JavaScript
-  - Localization
-  - Method
-  - NumberFormat
-  - Prototype
-  - Reference
+page-type: javascript-instance-method
 browser-compat: javascript.builtins.Intl.NumberFormat.formatToParts
 ---
 
 {{JSRef}}
 
-The **`Intl.NumberFormat.prototype.formatToParts()`** method
-allows locale-aware formatting of strings produced by `NumberFormat`
-formatters.
+The **`formatToParts()`** method of {{jsxref("Intl.NumberFormat")}} instances allows locale-aware formatting of strings produced by this `Intl.NumberFormat` object.
 
 {{EmbedInteractiveExample("pages/js/intl-numberformat-prototype-formattoparts.html")}}
 
 ## Syntax
 
 ```js-nolint
-formatToParts()
 formatToParts(number)
 ```
 
 ### Parameters
 
-- `number` {{optional_inline}}
-  - : A {{jsxref("Number")}} or {{jsxref("BigInt")}} to format.
+- `number`
+  - : A {{jsxref("Number")}}, {{jsxref("BigInt")}}, or string, to format. Strings are parsed in the same way as in [number conversion](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number#number_coercion), except that `formatToParts()` will use the exact value that the string represents, avoiding loss of precision during implicitly conversion to a number.
 
 ### Return value
 
@@ -49,8 +38,8 @@ looks like this:
 [
   { type: "integer", value: "3" },
   { type: "group", value: "." },
-  { type: "integer", value: "500" }
-]
+  { type: "integer", value: "500" },
+];
 ```
 
 Possible types are the following:
@@ -100,9 +89,9 @@ directly:
 ```js
 const number = 3500;
 
-const formatter = new Intl.NumberFormat('de-DE', {
-  style: 'currency',
-  currency: 'EUR'
+const formatter = new Intl.NumberFormat("de-DE", {
+  style: "currency",
+  currency: "EUR",
 });
 
 formatter.format(number);
@@ -119,14 +108,14 @@ formatter.formatToParts(number);
 
 // return value:
 [
-  { type: "integer",  value: "3"   },
-  { type: "group",    value: "."   },
-  { type: "integer",  value: "500" },
-  { type: "decimal",  value: ","   },
-  { type: "fraction", value: "00"  },
-  { type: "literal",  value: " "   },
-  { type: "currency", value: "€"   }
-]
+  { type: "integer", value: "3" },
+  { type: "group", value: "." },
+  { type: "integer", value: "500" },
+  { type: "decimal", value: "," },
+  { type: "fraction", value: "00" },
+  { type: "literal", value: " " },
+  { type: "currency", value: "€" },
+];
 ```
 
 Now the information is available separately and it can be formatted and concatenated
@@ -136,12 +125,17 @@ a [switch statement](/en-US/docs/Web/JavaScript/Reference/Statements/switch),
 [template literals](/en-US/docs/Web/JavaScript/Reference/Template_literals), and {{jsxref("Array.prototype.reduce()")}}.
 
 ```js
-const numberString = formatter.formatToParts(number).map(({type, value}) => {
-  switch (type) {
-    case 'currency': return `<strong>${value}</strong>`;
-    default : return value;
-  }
-}).reduce((string, part) => string + part);
+const numberString = formatter
+  .formatToParts(number)
+  .map(({ type, value }) => {
+    switch (type) {
+      case "currency":
+        return `<strong>${value}</strong>`;
+      default:
+        return value;
+    }
+  })
+  .reduce((string, part) => string + part);
 ```
 
 This will make the currency bold, when using the `formatToParts()` method.
@@ -162,5 +156,5 @@ console.log(numberString);
 ## See also
 
 - {{jsxref("Intl.NumberFormat")}}
-- {{jsxref("Intl/NumberFormat/format", "Intl.NumberFormat.prototype.format")}}
-- Formatting dates: {{jsxref("Intl/DateTimeFormat/formatToParts", "Intl.DateTimeFormat.prototype.formatToParts()")}}
+- {{jsxref("Intl/NumberFormat/format", "Intl.NumberFormat.prototype.format()")}}
+- {{jsxref("Intl/DateTimeFormat/formatToParts", "Intl.DateTimeFormat.prototype.formatToParts()")}}

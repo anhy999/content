@@ -1,17 +1,7 @@
 ---
-title: '<dd>: The Description Details element'
+title: "<dd>: The Description Details element"
 slug: Web/HTML/Element/dd
-tags:
-  - Definition
-  - Description Details
-  - Description list
-  - Element
-  - HTML
-  - HTML grouping content
-  - Reference
-  - Web
-  - dd
-  - details
+page-type: html-element
 browser-compat: html.elements.dd
 ---
 
@@ -21,11 +11,21 @@ The **`<dd>`** [HTML](/en-US/docs/Web/HTML) element provides the description, de
 
 {{EmbedInteractiveExample("pages/tabbed/dd.html", "tabbed-standard")}}
 
+## Attributes
+
+This element only includes the [global attributes](/en-US/docs/Web/HTML/Global_attributes).
+
+## Examples
+
+For examples, see the [examples provided for the `<dl>` element](/en-US/docs/Web/HTML/Element/dl#examples).
+
+## Technical summary
+
 <table class="properties">
   <tbody>
     <tr>
       <th scope="row">
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories"
+        <a href="/en-US/docs/Web/HTML/Content_categories"
           >Content categories</a
         >
       </th>
@@ -34,7 +34,7 @@ The **`<dd>`** [HTML](/en-US/docs/Web/HTML) element provides the description, de
     <tr>
       <th scope="row">Permitted content</th>
       <td>
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#flow_content"
+        <a href="/en-US/docs/Web/HTML/Content_categories#flow_content"
           >Flow content</a
         >.
       </td>
@@ -54,13 +54,17 @@ The **`<dd>`** [HTML](/en-US/docs/Web/HTML) element provides the description, de
         A {{HTMLElement("dl")}} or a
         {{HTMLElement("div")}} that is a child of a
         {{HTMLElement("dl")}}.<br />This element can be used after a
-        {{HTMLElement("dt")}} or another {{HTMLElement("dd")}}
+        {{HTMLElement("dt")}} or another <code>&lt;dd&gt;</code>
         element.
       </td>
     </tr>
     <tr>
       <th scope="row">Implicit ARIA role</th>
-      <td>{{ARIARole("definition")}}</td>
+      <td>
+        <a href="https://www.w3.org/TR/html-aria/#dfn-no-corresponding-role"
+          >No corresponding role</a
+        >
+        </td>
     </tr>
     <tr>
       <th scope="row">Permitted ARIA roles</th>
@@ -72,17 +76,6 @@ The **`<dd>`** [HTML](/en-US/docs/Web/HTML) element provides the description, de
     </tr>
   </tbody>
 </table>
-
-## Attributes
-
-This element's attributes include the [global attributes](/en-US/docs/Web/HTML/Global_attributes).
-
-- {{htmlattrdef("nowrap")}} {{Non-standard_inline}} {{Deprecated_Inline}}
-  - : If the value of this attribute is set to `yes`, the definition text will not wrap. The default value is `no`.
-
-## Examples
-
-For examples, see the [examples provided for the `<dl>` element](/en-US/docs/Web/HTML/Element/dl#examples).
 
 ## Specifications
 

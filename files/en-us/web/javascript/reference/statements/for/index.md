@@ -1,13 +1,7 @@
 ---
 title: for
 slug: Web/JavaScript/Reference/Statements/for
-tags:
-  - JavaScript
-  - Language feature
-  - Loop
-  - Reference
-  - Statement
-  - for
+page-type: javascript-statement
 browser-compat: javascript.statements.for
 ---
 
@@ -41,6 +35,13 @@ for (initialization; condition; afterthought)
 - `statement`
   - : A statement that is executed as long as the condition evaluates to true. You can use a [block statement](/en-US/docs/Web/JavaScript/Reference/Statements/block) to execute multiple statements. To execute no statement within the loop, use an [empty statement](/en-US/docs/Web/JavaScript/Reference/Statements/Empty) (`;`).
 
+## Description
+
+Like other looping statements, you can use [control flow statements](/en-US/docs/Web/JavaScript/Reference/Statements#control_flow) inside `statement`:
+
+- {{jsxref("Statements/break", "break")}} stops `statement` execution and goes to the first statement after the loop.
+- {{jsxref("Statements/continue", "continue")}} stops `statement` execution and re-evaluates `afterthought` then `condition`.
+
 ## Examples
 
 ### Using for
@@ -58,14 +59,14 @@ for (let i = 0; i < 9; i++) {
 
 The initialization block accepts both expressions and variable declarations. However, expressions cannot use the [`in`](/en-US/docs/Web/JavaScript/Reference/Operators/in) operator unparenthesized, because that is ambiguous with a [`for...in`](/en-US/docs/Web/JavaScript/Reference/Statements/for...in) loop.
 
-```js example-bad
+```js-nolint example-bad
 for (let i = "start" in window ? window.start : 0; i < 9; i++) {
   console.log(i);
 }
 // SyntaxError: 'for-in' loop variable declaration may not have an initializer.
 ```
 
-```js example-good
+```js-nolint example-good
 // Parenthesize the whole initializer
 for (let i = ("start" in window ? window.start : 0); i < 9; i++) {
   console.log(i);
@@ -145,7 +146,7 @@ for (; i < 3; i++) {
 }
 ```
 
-It logs `3`, `3`, and `3`. The reason is that each `setTimeout` creates a new closure that closes over the `i` variable, but if the `i` is not scoped to the loop body, all closures will reference the same variable when they eventually get called — and due to the asynchronous nature of [`setTimeout`](/en-US/docs/Web/API/setTimeout), it will happen after the loop has already exited, causing the value of `i` in all queued callbacks' bodies to have the value of `3`.
+It logs `3`, `3`, and `3`. The reason is that each `setTimeout` creates a new closure that closes over the `i` variable, but if the `i` is not scoped to the loop body, all closures will reference the same variable when they eventually get called — and due to the asynchronous nature of {{domxref("Window.setTimeout", "setTimeout()")}}, it will happen after the loop has already exited, causing the value of `i` in all queued callbacks' bodies to have the value of `3`.
 
 This also happens if you use a `var` statement as the initialization, because variables declared with `var` are only function-scoped, but not lexically scoped (i.e. they can't be scoped to the loop body).
 
@@ -166,7 +167,7 @@ The scoping effect of the initialization block can be understood as if the decla
 
 So re-assigning the new variables within `afterthought` does not affect the bindings from the previous iteration.
 
-Creating closures allows you to get hold of a binding during any particular iteration. This explains why closures created within the `initialization` section do not get updated by re-assignments of `i` in the `afterthought`.
+A new lexical scope is also created after `initialization`, just before `condition` is evaluated for the first time. These details can be observed by creating closures, which allow to get hold of a binding at any particular point. For example, in this code a closure created within the `initialization` section does not get updated by re-assignments of `i` in the `afterthought`:
 
 ```js
 for (let i = 0, getI = () => i; i < 3; i++) {
@@ -184,7 +185,17 @@ for (let i = 0, getI = () => i; i < 3; i++, getI = () => i) {
 // Logs 0, 1, 2
 ```
 
-In fact, you can capture the initial binding of the `i` variable and re-assign it later, and this updated value will not be visible to the loop body, which sees the next new binding of `i`.
+The `i` variable inside the `initialization` is distinct from the `i` variable inside every iteration, including the first. So, in this example, `getI` returns 0, even though the value of `i` inside the iteration is incremented beforehand:
+
+```js
+for (let i = 0, getI = () => i; i < 3; ) {
+  i++;
+  console.log(getI());
+}
+// Logs 0, 0, 0
+```
+
+In fact, you can capture this initial binding of the `i` variable and re-assign it later, and this updated value will not be visible to the loop body, which sees the next new binding of `i`.
 
 ```js
 for (
@@ -234,7 +245,7 @@ Note that the semicolon after the `for` statement is mandatory, because it stand
 
 ### Using for with two iterating variables
 
-You can create two counters that are updated simultaneously in a for loop using the [comma operator](/en-US/docs/Web/JavaScript/Reference/Operators/Comma_Operator). Multiple `let` and `var` declarations can also be joined with commas.
+You can create two counters that are updated simultaneously in a for loop using the [comma operator](/en-US/docs/Web/JavaScript/Reference/Operators/Comma_operator). Multiple `let` and `var` declarations can also be joined with commas.
 
 ```js
 const arr = [1, 2, 3, 4, 5, 6];
@@ -256,7 +267,7 @@ for (let l = 0, r = arr.length - 1; l < r; l++, r--) {
 
 ## See also
 
-- [empty statement](/en-US/docs/Web/JavaScript/Reference/Statements/Empty)
+- [Empty statement](/en-US/docs/Web/JavaScript/Reference/Statements/Empty)
 - {{jsxref("Statements/break", "break")}}
 - {{jsxref("Statements/continue", "continue")}}
 - {{jsxref("Statements/while", "while")}}

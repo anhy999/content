@@ -1,43 +1,37 @@
 ---
 title: undefined
 slug: Web/JavaScript/Reference/Global_Objects/undefined
-tags:
-  - JavaScript
-  - Language feature
-  - Reference
+page-type: javascript-global-property
 browser-compat: javascript.builtins.undefined
 ---
 
 {{jsSidebar("Objects")}}
 
-The global **`undefined`** property represents the primitive
-value `{{Glossary("Undefined", "undefined")}}`. It is one of JavaScript's
+The **`undefined`** global property represents the primitive
+value [`undefined`](/en-US/docs/Web/JavaScript/Data_structures#undefined_type). It is one of JavaScript's
 {{Glossary("Primitive", "primitive types")}}.
-
-{{js_property_attributes(0,0,0)}}
 
 {{EmbedInteractiveExample("pages/js/globalprops-undefined.html")}}
 
-## Syntax
+## Value
 
-```js-nolint
-undefined
-```
+The primitive value [`undefined`](/en-US/docs/Web/JavaScript/Data_structures#undefined_type).
+
+{{js_property_attributes(0, 0, 0)}}
 
 ## Description
 
-`undefined` is a property of the _global object_. That is, it is a
-variable in global scope. The initial value of `undefined` is the primitive
-value `{{Glossary("Undefined", "undefined")}}`.
+`undefined` is a property of the _global object_. That is, it is a variable in global scope.
 
-In all non-legacy browsers, `undefined` is a non-configurable, non-writable property. (Even when this is not the case, avoid overriding it.)
+In all non-legacy browsers, `undefined` is a non-configurable, non-writable property. Even when this is not the case, avoid overriding it.
 
 A variable that has not been assigned a value is of type `undefined`. A
 method or statement also returns `undefined` if the variable that is being
 evaluated does not have an assigned value. A function returns `undefined` if
 a value was not {{jsxref("Statements/return", "returned")}}.
 
-> **Note:** While you can use `undefined` as an {{Glossary("identifier")}} (variable name) in any scope other than the global scope (because `undefined` is not a [reserved word](/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#reserved_words)), doing so is a very bad idea that will make your code difficult to maintain and debug.
+> [!NOTE]
+> While you can use `undefined` as an {{Glossary("identifier")}} (variable name) in any scope other than the global scope (because `undefined` is not a [reserved word](/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#reserved_words)), doing so is a very bad idea that will make your code difficult to maintain and debug.
 >
 > ```js example-bad
 > // DON'T DO THIS
@@ -69,7 +63,8 @@ if (x === undefined) {
 }
 ```
 
-> **Note:** The _strict equality_ operator (as opposed to the
+> [!NOTE]
+> The _strict equality_ operator (as opposed to the
 > _standard equality_ operator) must be used here, because
 > `x == undefined` also checks whether `x` is `null`,
 > while strict equality doesn't. This is because `null` is not equivalent to
@@ -94,13 +89,12 @@ error if the variable has not been declared.
 ```js
 // x has not been declared before
 // evaluates to true without errors
-if (typeof x === 'undefined') {
+if (typeof x === "undefined") {
   // these statements execute
 }
 
 // Throws a ReferenceError
 if (x === undefined) {
-
 }
 ```
 
@@ -145,5 +139,5 @@ if (y === void 0) {
 
 ## See also
 
-- JavaScript's {{Glossary("Primitive", "primitive types")}}
+- [JavaScript data types and data structures](/en-US/docs/Web/JavaScript/Data_structures)
 - [`null`](/en-US/docs/Web/JavaScript/Reference/Operators/null)

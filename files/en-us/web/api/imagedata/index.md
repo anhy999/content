@@ -2,21 +2,14 @@
 title: ImageData
 slug: Web/API/ImageData
 page-type: web-api-interface
-tags:
-  - API
-  - Canvas
-  - ImageData
-  - Images
 browser-compat: api.ImageData
 ---
 
-{{APIRef("Canvas API")}}
+{{APIRef("Canvas API")}}{{AvailableInWorkers}}
 
 The **`ImageData`** interface represents the underlying pixel data of an area of a {{HTMLElement("canvas")}} element.
 
 It is created using the {{domxref("ImageData.ImageData", "ImageData()")}} constructor or creator methods on the {{domxref("CanvasRenderingContext2D")}} object associated with a canvas: {{domxref("CanvasRenderingContext2D.createImageData", "createImageData()")}} and {{domxref("CanvasRenderingContext2D.getImageData", "getImageData()")}}. It can also be used to set a part of the canvas by using {{domxref("CanvasRenderingContext2D.putImageData", "putImageData()")}}.
-
-{{AvailableInWorkers}}
 
 ## Constructors
 
@@ -26,7 +19,7 @@ It is created using the {{domxref("ImageData.ImageData", "ImageData()")}} constr
 ## Instance properties
 
 - {{domxref("ImageData.data")}} {{ReadOnlyInline}}
-  - : A {{jsxref("Uint8ClampedArray")}} representing a one-dimensional array containing the data in the RGBA order, with integer values between `0` and `255` (inclusive).
+  - : A {{jsxref("Uint8ClampedArray")}} representing a one-dimensional array containing the data in the RGBA order, with integer values between `0` and `255` (inclusive). The order goes by rows from the top-left pixel to the bottom-right.
 - {{domxref("ImageData.colorSpace")}} {{ReadOnlyInline}}
   - : A string indicating the color space of the image data.
 - {{domxref("ImageData.height")}} {{ReadOnlyInline}}
