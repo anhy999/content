@@ -2,16 +2,6 @@
 title: ":default"
 slug: Web/CSS/:default
 page-type: css-pseudo-class
-tags:
-  - ":default"
-  - CSS
-  - Forms
-  - Layout
-  - Pseudo-class
-  - Reference
-  - Selector
-  - Web
-  - default
 browser-compat: css.selectors.default
 ---
 
@@ -29,8 +19,10 @@ What this selector matches is defined in [HTML Standard §4.16.3 Pseudo-classes]
 
 ## Syntax
 
-```
-:default
+```css
+:default {
+  /* ... */
+}
 ```
 
 ## Examples
@@ -81,6 +73,6 @@ input:default + label {
 
 ## See also
 
-- [Web forms — Working with user data](/en-US/docs/Learn/Forms)
-- [Styling web forms](/en-US/docs/Learn/Forms/Styling_web_forms)
+- [Web forms — Working with user data](/en-US/docs/Learn_web_development/Extensions/Forms)
+- [Styling web forms](/en-US/docs/Learn_web_development/Extensions/Forms/Styling_web_forms)
 - Related HTML elements: {{htmlelement("button")}}, [`<input type="checkbox">`](/en-US/docs/Web/HTML/Element/input/checkbox), [`<input type="radio">`](/en-US/docs/Web/HTML/Element/input/radio), and {{htmlelement("option")}}

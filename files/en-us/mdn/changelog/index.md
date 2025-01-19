@@ -1,10 +1,7 @@
 ---
 title: MDN Web Docs changelog
 slug: MDN/Changelog
-tags:
-  - Changelog
-  - Contribute
-  - MDN
+page-type: guide
 ---
 
 {{MDNSidebar}}
@@ -47,7 +44,7 @@ Previously, the syntax blocks of JavaScript builtin and WebAPI methods that can 
 
 This was problematic — many developers were confused by this, and it conflicts with valid syntax forms in other programming languages (e.g. `[]` is also an array in JavaScript).
 
-As a result, going forward we are now writing multiple syntax forms of a method on separate lines inside the syntax block. See [Syntax sections > Multiple lines/Optional parameters](/en-US/docs/MDN/Writing_guidelines/Page_structures/Syntax_sections#multiple_lines) for further information and examples.
+As a result, going forward we are now writing multiple syntax forms of a method on separate lines inside the syntax block. See [Syntax sections > Multiple lines/Optional parameters](/en-US/docs/MDN/Writing_guidelines/Page_structures/Syntax_sections#multiple_linesoptional_parameters) for further information and examples.
 
 ### Documenting mixins
 
@@ -59,7 +56,7 @@ before linking to those from the landing pages of the interfaces that implement 
 This was confusing for readers because mixins are spec constructs — you never access the defined members using the mixin classes.
 To avoid this confusion we've instead put the pages for members defined on mixins directly under the implementing class pages.
 For more details, see the guide page on
-[how to write an API reference](/en-US/docs/MDN/Writing_guidelines/Howto/Write_an_API_reference/Information_contained_in_a_WebIDL_file#mixins)
+[how to write an API reference](/en-US/docs/MDN/Writing_guidelines/Howto/Write_an_api_reference/Information_contained_in_a_WebIDL_file#mixins)
 and the discussion leading to this change at [mdn/content#1940](https://github.com/mdn/content/issues/1940).
 
 ## January 2021

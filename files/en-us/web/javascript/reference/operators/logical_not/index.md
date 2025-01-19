@@ -1,12 +1,7 @@
 ---
 title: Logical NOT (!)
 slug: Web/JavaScript/Reference/Operators/Logical_NOT
-tags:
-  - JavaScript
-  - Language feature
-  - Logical Operator
-  - Operator
-  - Reference
+page-type: javascript-operator
 browser-compat: javascript.operators.logical_not
 ---
 
@@ -22,7 +17,7 @@ operand can be converted to `true`; otherwise, returns `true`.
 ## Syntax
 
 ```js-nolint
-!expr
+!x
 ```
 
 ## Description
@@ -42,7 +37,7 @@ Examples of expressions that can be converted to false are:
 - empty string (`""` or `''` or ` `` `);
 - `undefined`.
 
-Even though the `!` operator can be used with operands that are not Boolean values, it can still be considered a boolean operator since its return value can always be converted to a [boolean primitive](/en-US/docs/Web/JavaScript/Data_structures#boolean_type). To explicitly convert its return value (or any expression in general) to the corresponding boolean value, use a double NOT operator (`!!`) or the {{jsxref("Global_Objects/Boolean/Boolean", "Boolean")}} constructor.
+Even though the `!` operator can be used with operands that are not Boolean values, it can still be considered a boolean operator since its return value can always be converted to a [boolean primitive](/en-US/docs/Web/JavaScript/Data_structures#boolean_type). To explicitly convert its return value (or any expression in general) to the corresponding boolean value, use a double NOT operator (`!!`) or the {{jsxref("Boolean/Boolean", "Boolean")}} constructor.
 
 ## Examples
 
@@ -51,42 +46,41 @@ Even though the `!` operator can be used with operands that are not Boolean valu
 The following code shows examples of the `!` (logical NOT) operator.
 
 ```js
-n1 = !true               // !t returns false
-n2 = !false              // !f returns true
-n3 = !''                 // !f returns true
-n4 = !'Cat'              // !t returns false
+!true; // !t returns false
+!false; // !f returns true
+!""; // !f returns true
+!"Cat"; // !t returns false
 ```
 
 ### Double NOT (`!!`)
 
 It is possible to use a couple of NOT operators in series to explicitly force the
 conversion of any value to the corresponding [boolean primitive](/en-US/docs/Web/JavaScript/Data_structures#boolean_type).
-The conversion is based on the "truthyness" or "falsyness" of the value (see
+The conversion is based on the "truthiness" or "falsiness" of the value (see
 {{Glossary("truthy")}} and {{Glossary("falsy")}}).
 
-The same conversion can be done through the {{jsxref("Global_Objects/Boolean/Boolean",
-  "Boolean")}} function.
+The same conversion can be done through the {{jsxref("Boolean/Boolean", "Boolean()")}} function.
 
 ```js
-n1 = !!true                   // !!truthy returns true
-n2 = !!{}                     // !!truthy returns true: any object is truthy...
-n3 = !!(new Boolean(false))   // ...even Boolean objects with a false .valueOf()!
-n4 = !!false                  // !!falsy returns false
-n5 = !!""                     // !!falsy returns false
-n6 = !!Boolean(false)         // !!falsy returns false
+!!true; // !!truthy returns true
+!!{}; // !!truthy returns true: any object is truthy...
+!!new Boolean(false); // ...even Boolean objects with a false .valueOf()!
+!!false; // !!falsy returns false
+!!""; // !!falsy returns false
+!!Boolean(false); // !!falsy returns false
 ```
 
 ### Converting between NOTs
 
 The following operation involving **booleans**:
 
-```js
+```js-nolint
 !!bCondition
 ```
 
 is always equal to:
 
-```js
+```js-nolint
 bCondition
 ```
 

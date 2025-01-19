@@ -1,19 +1,7 @@
 ---
-title: The "codecs" parameter in common media types
+title: Codecs in common media types
 slug: Web/Media/Formats/codecs_parameter
-tags:
-  - Audio
-  - Codecs
-  - Containers
-  - MIME
-  - MIME Types
-  - Media
-  - Media Types
-  - Parameter
-  - Types
-  - Video
-  - Web
-  - formats
+page-type: guide
 ---
 
 {{QuickLinksWithSubpages("/en-US/docs/Web/Media")}}
@@ -24,12 +12,12 @@ For that reason, the `codecs` parameter can be added to the MIME type describing
 
 This guide briefly examines the syntax of the media type `codecs` parameter and how it's used with the MIME type string to provide details about the contents of audio or video media beyond indicating the container type.
 
-## General syntax
+## Container format MIME types
 
-A basic MIME media type is expressed by stating the type of media (`audio`, `video`, etc.), then a slash character (`/`), then the container format used to contain the media:
+The MIME type for a container format is expressed by stating the type of media (`audio`, `video`, etc.), then a slash character (`/`), then the format used to contain the media:
 
 - `audio/mpeg`
-  - : An audio file using the [MPEG](/en-US/docs/Web/Media/Formats/Containers#mpeg) file type, such as an MP3.
+  - : An audio file using the [MPEG](/en-US/docs/Web/Media/Formats/Containers#mpegmpeg-2) file type, such as an MP3.
 - `video/ogg`
   - : A video file using the [Ogg](/en-US/docs/Web/Media/Formats/Containers#ogg) file type.
 - `video/mp4`
@@ -37,20 +25,23 @@ A basic MIME media type is expressed by stating the type of media (`audio`, `vid
 - `video/quicktime`
   - : A video file in Apple's [QuickTime](/en-US/docs/Web/Media/Formats/Containers#quicktime) format. As noted elsewhere, this format was once commonly used on the web but no longer is, since it required a plugin to use.
 
-However, each of these MIME types is vague. All of these file types support a variety of codecs, and those codecs may have any number of profiles, levels, and other configuration factors. For this reason, you can add the `codecs` parameter to the media type.
+However, each of these MIME types is vague. All of these file types support a variety of codecs, and those codecs may have any number of profiles, levels, and other configuration factors. For this reason, you may want to include the `codecs` parameter along with the media type.
 
-To do so, append a semicolon (`;`) followed by `codecs=` and then the string describing the format of the contents of the file. Some media types only let you specify the names of the codecs to use, while others allow you to specify various constraints on those codecs as well. You can specify multiple codecs by separating them with commas.
+## Basic syntax
+
+You can add the `codecs` parameter to the media type. To do so, append a semicolon (`;`) followed by `codecs=` and then the string describing the format of the contents of the file. Some media types only let you specify the names of the codecs to use, while others allow you to specify various constraints on those codecs as well. You can specify multiple codecs by separating them with commas.
 
 - `audio/ogg; codecs=vorbis`
   - : An [Ogg](/en-US/docs/Web/Media/Formats/Containers#ogg) file containing a [Vorbis](/en-US/docs/Web/Media/Formats/Audio_codecs#vorbis) audio track.
 - `video/webm; codecs="vp8, vorbis"`
   - : A [WebM](/en-US/docs/Web/Media/Formats/Containers#webm) file containing [VP8](/en-US/docs/Web/Media/Formats/Video_codecs#vp8) video and/or [Vorbis](/en-US/docs/Web/Media/Formats/Audio_codecs#vorbis) audio.
 - `video/mp4; codecs="avc1.4d002a"`
-  - : An [MPEG-4](/en-US/docs/Web/Media/Formats/Containers#mpeg-4_mp4) file containing [AVC](</en-US/docs/Web/Media/Formats/Video_codecs#avc_(h.264)>) (H.264) video, Main Profile, Level 4.2.
+  - : An [MPEG-4](/en-US/docs/Web/Media/Formats/Containers#mpeg-4_mp4) file containing [AVC](/en-US/docs/Web/Media/Formats/Video_codecs#avc_h.264) (H.264) video, Main Profile, Level 4.2.
 
 As is the case with any MIME type parameter, `codecs` must be changed to `codecs*` (note the asterisk character, `*`) if any of the properties of the codec use special characters which must be percent-encoded per {{RFC(2231, "MIME Parameter Value and Encoded Word Extensions", 4)}}. You can use the JavaScript {{jsxref("Global_Objects/encodeURI", "encodeURI()")}} function to encode the parameter list; similarly, you can use {{jsxref("Global_Objects/decodeURI", "decodeURI()")}} to decode a previously encoded parameter list.
 
-> **Note:** When the `codecs` parameter is used, the specified list of codecs must include every codec used for the contents of the file. The list may also contain codecs not present in the file.
+> [!NOTE]
+> When the `codecs` parameter is used, the specified list of codecs must include every codec used for the contents of the file. The list may also contain codecs not present in the file.
 
 ## Codec options by container
 
@@ -67,13 +58,14 @@ Several of the links above go to the same section; that's because those media ty
 
 ### AV1
 
-The syntax of the `codecs` parameter for AV1 is defined the [AV1 Codec ISO Media File Format Binding](https://aomediacodec.github.io/av1-isobmff/) specification, section 5: [Codecs Parameter String](https://aomediacodec.github.io/av1-isobmff/#codecsparam).
+The syntax of the `codecs` parameter for AV1 is defined in the [AV1 Codec ISO Media File Format Binding](https://aomediacodec.github.io/av1-isobmff/) specification, section 5: [Codecs Parameter String](https://aomediacodec.github.io/av1-isobmff/#codecsparam).
 
 ```plain
 av01.P.LLT.DD[.M.CCC.cp.tc.mc.F]
 ```
 
-> **Note:** Chromium-based browsers will accept any subset of the optional parameters (rather than all or none, as required by the specification).
+> [!NOTE]
+> Chromium-based browsers will accept any subset of the optional parameters (rather than all or none, as required by the specification).
 
 This codec parameter string's components are described in more detail in the table below. Each component is a fixed number of characters long; if the value is less than that length, it must be padded with leading zeros.
 
@@ -106,8 +98,7 @@ This codec parameter string's components are described in more detail in the tab
             <tr>
               <td>0</td>
               <td>
-                "Main" profile; supports YUV 4:2:0 or monochrome bitstreams with
-                bit depth of 8 or 10 bits per component.
+                "Main" profile; supports YUV 4:2:0 or monochrome bitstreams with bit depth of 8 or 10 bits per component.
               </td>
             </tr>
             <tr>
@@ -117,8 +108,7 @@ This codec parameter string's components are described in more detail in the tab
             <tr>
               <td>2</td>
               <td>
-                "Professional" profile adds support for 4:2:2 chroma subsampling
-                and 12-bit per component color.
+                "Professional" profile adds support for 4:2:2 chroma subsampling and 12-bit per component color.
               </td>
             </tr>
           </tbody>
@@ -135,41 +125,34 @@ This codec parameter string's components are described in more detail in the tab
     <tr>
       <td><code>T</code></td>
       <td>
-        The one-character tier indicator. For the Main tier (<code>seq_tier</code>
-        equals 0), this character is the letter <code>M</code>. For the High
-        tier (<code>seq_tier</code> is 1), this character is the letter
-        <code>H</code>. The High tier is only available for level 4.0 and up.
+        The one-character tier indicator. For the Main tier (<code>seq_tier</code> equals 0), this character is the letter <code>M</code>.
+        For the High tier (<code>seq_tier</code> is 1), this character is the letter <code>H</code>.
+        The High tier is only available for level 4.0 and up.
       </td>
     </tr>
     <tr>
       <td><code>DD</code></td>
       <td>
-        The two-digit component bit depth. This value must be one of 8, 10, or
-        12; which values are valid varies depending on the profile and other
-        properties.
+        The two-digit component bit depth. This value must be one of 8, 10, or 12; which values are valid varies depending on the profile and other properties.
       </td>
     </tr>
     <tr>
       <td><code>M</code></td>
       <td>
-        The one-digit monochrome flag; if this is 0, the video includes the U
-        and V planes in addition to the Y plane. Otherwise, the video data is
-        entirely in the Y plane and is therefore monochromatic. See
-        {{SectionOnPage("/en-US/docs/Web/Media/Formats/Video_concepts", "YUV")}}
-        for details on how the YUV color system works. The default value is 0
-        (not monochrome).
+        The one-digit monochrome flag; if this is 0, the video includes the U and V planes in addition to the Y plane.
+        Otherwise, the video data is entirely in the Y plane and is therefore monochromatic.
+        See <a href="/en-US/docs/Web/Media/Formats/Video_concepts#yuv">YUV</a> for details on how the YUV color system works.
+        The default value is 0 (not monochrome).
       </td>
     </tr>
     <tr>
       <td><code>CCC</code></td>
       <td>
         <p>
-          <code>CCC</code> indicates the chroma subsampling as three digits. The
-          first digit is <code>subsampling_x</code>, the second is
-          <code>subsampling_y</code>. If both of those are 1, the third is the
-          value of <code>chroma_sample_position</code>; otherwise, the third
-          digit is always 0. This, combined with the <code>M</code> component,
-          can be used to construct the chroma subsampling format:
+          <code>CCC</code> indicates the chroma subsampling as three digits.
+          The first digit is <code>subsampling_x</code>, the second is <code>subsampling_y</code>.
+          If both of those are 1, the third is the value of <code>chroma_sample_position</code>; otherwise, the third digit is always 0.
+          This, combined with the <code>M</code> component, can be used to construct the chroma subsampling format:
         </p>
         <table class="standard-table">
           <caption>
@@ -211,12 +194,7 @@ This codec parameter string's components are described in more detail in the tab
           </tbody>
         </table>
         <p>
-          The third digit in <code>CCC</code> indicates the chroma sample
-          position, with a value of 0 indicating that the position is unknown
-          and must be separately provided during decoding; a value of 1
-          indicating that the sample position is horizontally collocated with the
-          (0, 0) luma sample; and a value of 2 indicating that the sample
-          position is collocated with (0, 0) luma.
+          The third digit in <code>CCC</code> indicates the chroma sample position, with a value of 0 indicating that the position is unknown and must be separately provided during decoding; a value of 1 indicating that the sample position is horizontally collocated with the (0, 0) luma sample; and a value of 2 indicating that the sample position is collocated with (0, 0) luma.
         </p>
         <p>The default value is <code>110</code> (4:2:0 chroma subsampling).</p>
       </td>
@@ -224,47 +202,33 @@ This codec parameter string's components are described in more detail in the tab
     <tr>
       <td><code>cp</code></td>
       <td>
-        The two-digit <code>color_primaries</code> value indicates the color
-        system used by the media. For example, BT.2020/BT.2100 color, as used
-        for HDR video, is <code>09</code>. The information for this—and for each
-        of the remaining components—is found in the
-        <a
-          href="https://aomediacodec.github.io/av1-spec/#color-config-semantics"
-          >Color config semantics section</a
-        >
-        of the AV1 specification. The default value is <code>01</code> (ITU-R
-        BT.709).
+        The two-digit <code>color_primaries</code> value indicates the color system used by the media.
+        For example, BT.2020/BT.2100 color, as used for HDR video, is <code>09</code>.
+        The information for this—and for each of the remaining components—is found in the <a href="https://aomediacodec.github.io/av1-spec/#color-config-semantics">Color config semantics section</a> of the AV1 specification.
+        The default value is <code>01</code> (ITU-R BT.709).
       </td>
     </tr>
     <tr>
       <td><code>tc</code></td>
       <td>
-        The two-digit <code>transfer_characteristics</code> value. This value
-        defines the function used to map the gamma (delightfully called the
-        "opto-electrical transfer function" in technical parlance) from the
-        source to the display. For example, 10-bit BT.2020 is <code>14</code>.
+        The two-digit <code>transfer_characteristics</code> value. This value defines the function used to map the gamma (delightfully called the "opto-electronic transfer function" in technical parlance) from the source to the display.
+        For example, 10-bit BT.2020 is <code>14</code>.
         The default value is <code>01</code> (ITU-R BT.709).
       </td>
     </tr>
     <tr>
       <td><code>mc</code></td>
       <td>
-        The two-digit <code>matrix_coefficients</code> constant selects the
-        matrix coefficients used to convert the red, blue, and green channels
-        into luma and chroma signals. For example, the standard coefficients
-        used for BT.709 are indicated using the value <code>01</code>. The
-        default value is <code>01</code> (ITU-R BT.709).
+        The two-digit <code>matrix_coefficients</code> constant selects the matrix coefficients used to convert the red, blue, and green channels into luma and chroma signals.
+        For example, the standard coefficients used for BT.709 are indicated using the value <code>01</code>.
+        The default value is <code>01</code> (ITU-R BT.709).
       </td>
     </tr>
     <tr>
       <td><code>F</code></td>
       <td>
-        A one-digit flag indicating whether the color should be allowed to use
-        the full range of possible values (<code>1</code>), or should be
-        constrained to those values considered legal for the specified color
-        configuration (that is, the
-        <strong>studio swing representation</strong>). The default is 0 (use the
-        studio swing representation).
+        A one-digit flag indicating whether the color should be allowed to use the full range of possible values (<code>1</code>), or should be constrained to those values considered legal for the specified color configuration (that is, the <strong>studio swing representation</strong>).
+        The default is 0 (use the studio swing representation).
       </td>
     </tr>
   </tbody>
@@ -276,6 +240,327 @@ All fields from `M` (monochrome flag) onward are optional; you may stop includin
   - : AV1 Professional Profile, level 5.3, Main tier, 10 bits per color component, 4:2:2 chroma subsampling using ITU-R BT.2100 color primaries, transfer characteristics, and YCbCr color matrix. The studio swing representation is indicated.
 - `av01.0.15M.10`
   - : AV1 Main Profile, level 5.3, Main tier, 10 bits per color component. The remaining properties are taken from the defaults: 4:2:0 chroma subsampling, BT.709 color primaries, transfer characteristics, and matrix coefficients. Studio swing representation.
+
+### VP9
+
+#### ISO Base Media File Format syntax
+
+The syntax of the `codecs` parameter for VP9 is defined in the [VP Codec ISO Media File Format Binding](https://www.webmproject.org/vp9/mp4/) specification, in the [Codecs Parameter String](https://www.webmproject.org/vp9/mp4/#codecs-parameter-string) section.
+
+In this format, the `codecs` parameter's value begins with a four-character code identifying the codec being used in the container, which is then followed by a series of period (`.`) separated two-digit values.
+
+```plain
+cccc.PP.LL.DD
+cccc.PP.LL.DD.CC.cp.tc.mc.FF
+```
+
+The first four components are required; everything from `CC` (chroma subsampling) onward is optional, but all or nothing. Each of these components is described in the following table. Following the table are some examples.
+
+<table class="standard-table">
+  <caption>
+    WebM codecs parameter components
+  </caption>
+  <thead>
+    <tr>
+      <th scope="col">Component</th>
+      <th scope="col">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>cccc</code></td>
+      <td>
+        <p>
+          A four-character code indicating which indicates which of the possible codecs is being described.
+          Potential values are:
+        </p>
+        <table class="standard-table">
+          <caption>
+            Four-character codes for WebM-supported codecs
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Four-character code</th>
+              <th scope="col">Codec</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>vp08</code></td>
+              <td>VP8</td>
+            </tr>
+            <tr>
+              <td><code>vp09</code></td>
+              <td>VP9</td>
+            </tr>
+            <tr>
+              <td><code>vp10</code></td>
+              <td>VP10</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><code>PP</code></td>
+      <td>
+        <p>
+          The two-digit profile number, padded with leading zeroes if necessary to be exactly two digits.
+        </p>
+        <table class="standard-table">
+          <caption>
+            WebM profile numbers
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Profile</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>00</code></td>
+              <td>
+                Only 4:2:0 (chroma subsampled both horizontally and vertically).
+                Allows only 8 bits per color component.
+              </td>
+            </tr>
+            <tr>
+              <td><code>01</code></td>
+              <td>
+                All chroma subsampling formats are allowed.
+                Allows only 8 bits per color component.
+              </td>
+            </tr>
+            <tr>
+              <td><code>02</code></td>
+              <td>
+                Only 4:2:0 (chroma subsampled both horizontally and vertically).
+                Supports 8, 10, or 12 bits per color sample component.
+              </td>
+            </tr>
+            <tr>
+              <td><code>03</code></td>
+              <td>
+                All chroma subsampling formats are allowed.
+                Supports 8, 10, or 12 bits per color sample component.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><code>LL</code></td>
+      <td>
+        The two-digit level number.
+        The level number is a fixed-point notation, where the first digit is the ones digit, and the second digit represents
+        tenths.
+        For example, level 3 is <code>30</code> and level 6.1 is <code>61</code>.
+      </td>
+    </tr>
+    <tr>
+      <td><code>DD</code></td>
+      <td>
+        The bit depth of the luma and color component values; permitted values are 8, 10, and 12.
+      </td>
+    </tr>
+    <tr>
+      <td><code>CC</code></td>
+      <td>
+        <p>
+          A two-digit value indicating which chroma subsampling format to use.
+          The following table lists permitted values; see <a href="/en-US/docs/Web/Media/Formats/Video_concepts#chroma_subsampling">Chroma subsampling</a> in our "Digital video concepts" guide for additional information about this topic and others.
+        </p>
+        <table class="standard-table">
+          <caption>
+            WebM chroma subsampling identifiers
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Chroma subsampling format</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>00</code></td>
+              <td>
+                4:2:0 with the chroma samples sited interstitially between the pixels
+              </td>
+            </tr>
+            <tr>
+              <td><code>01</code></td>
+              <td>
+                4:2:0 chroma subsampling with the samples collocated with luma (0, 0)
+              </td>
+            </tr>
+            <tr>
+              <td><code>02</code></td>
+              <td>
+                4:2:2 chroma subsampling (4 out of each 4 horizontal pixels' luminance are used)
+              </td>
+            </tr>
+            <tr>
+              <td><code>03</code></td>
+              <td>
+                4:4:4 chroma subsampling (every pixel's luminance and chrominance are both retained)
+              </td>
+            </tr>
+            <tr>
+              <td><code>04</code></td>
+              <td><em>Reserved</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><code>cp</code></td>
+      <td>
+        <p>
+          A two-digit integer specifying which of the color primaries from Section 8.1 of the <a href="https://www.itu.int/rec/T-REC-H.273/en" >ISO/IEC 23001-8:2016</a> standard.
+          This component, and every component after it, is optional.
+        </p>
+        <p>The possible values of the color primaries component are:</p>
+        <table class="standard-table">
+          <caption>
+            ISO/IEC Color primary identifiers
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>00</code></td>
+              <td><em>Reserved for future use by ITU or ISO/IEC</em></td>
+            </tr>
+            <tr>
+              <td><code>01</code></td>
+              <td>
+                BT.709, sRGB, sYCC. BT.709 is the standard for high definition (HD) television; sRGB is the most common color space used for computer displays.
+                Broadcast BT.709 uses 8-bit color depth with the legal range being from 16 (black) to 235 (white).
+              </td>
+            </tr>
+            <tr>
+              <td><code>02</code></td>
+              <td>
+                Image characteristics are unknown, or are to be determined by the application
+              </td>
+            </tr>
+            <tr>
+              <td><code>03</code></td>
+              <td><em>Reserved for future use by ITU or ISO/IEC</em></td>
+            </tr>
+            <tr>
+              <td><code>04</code></td>
+              <td>
+                BT.470 System M, NTSC (standard definition television in the United States)
+              </td>
+            </tr>
+            <tr>
+              <td><code>05</code></td>
+              <td>
+                BT.470 System B, G; BT.601; BT.1358 625; BT.1700 625 PAL and 625 SECAM
+              </td>
+            </tr>
+            <tr>
+              <td><code>06</code></td>
+              <td>
+                BT.601 525; BT.1358 525 or 625; BT.1700 NTSC; SMPTE 170M.
+                <em>Functionally identical to <code>7</code>.</em>
+              </td>
+            </tr>
+            <tr>
+              <td><code>70</code></td>
+              <td>
+                {{Glossary("SMPTE")}} 240M (historical).
+                <em>Functionally identical to <code>6</code>.</em>
+              </td>
+            </tr>
+            <tr>
+              <td><code>08</code></td>
+              <td>Generic film</td>
+            </tr>
+            <tr>
+              <td><code>09</code></td>
+              <td>
+                BT.2020; BT.2100.
+                Used for ultra-high definition (4K) High Dynamic Range (HDR) video, these have a very wide color {{glossary("gamut")}} and support 10-bit and 12-bit color component depths.
+              </td>
+            </tr>
+            <tr>
+              <td><code>10</code></td>
+              <td>
+                SMPTE ST 428 (D-Cinema Distribution Master: Image characteristics).
+                Defines the uncompressed image characteristics for DCDM.
+              </td>
+            </tr>
+            <tr>
+              <td><code>11</code></td>
+              <td>
+                SMPTE RP 431 (D-Cinema Quality: Reference projector and environment).
+                Describes the reference projector and environment conditions that provide a consistent film presentation experience.
+              </td>
+            </tr>
+            <tr>
+              <td><code>12</code></td>
+              <td>
+                SMPTE EG 432 (Digital Source Processing: Color Processing for D-Cinema).
+                Engineering guideline making color signal decoding recommendations for digital movies.
+              </td>
+            </tr>
+            <tr>
+              <td><code>13</code> – <code>21</code></td>
+              <td><em>Reserved for future use by ITU-T or ISO/IEC</em></td>
+            </tr>
+            <tr>
+              <td><code>22</code></td>
+              <td>EBU Tech 3213-E</td>
+            </tr>
+            <tr>
+              <td><code>23</code> – <code>255</code></td>
+              <td><em>Reserved for future use by ITU-T or ISO/IEC</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><code>tc</code></td>
+      <td>
+        A two-digit integer indicating the
+        <code>transferCharacteristics</code> for the video.
+        This value is from Section 8.2 of <a href="https://www.itu.int/rec/T-REC-H.273/en">ISO/IEC 23001-8:2016</a>, and indicates the transfer characteristics to be used when adapting the decoded color to the render target.
+      </td>
+    </tr>
+    <tr>
+      <td><code>mc</code></td>
+      <td>
+        The two-digit value for the <code>matrixCoefficients</code> property.
+        This value comes from the table in Section 8.3 of the <a href="https://www.itu.int/rec/T-REC-H.273/en">ISO/IEC 23001-8:2016</a> specification.
+        This value indicates which set of coefficients to use when mapping from the native red, blue, and green primaries to the luma and chroma signals.
+        These coefficients are in turn used with the equations found in that same section.
+      </td>
+    </tr>
+    <tr>
+      <td><code>FF</code></td>
+      <td>
+        Indicates whether to restrict the black level and color range of each color component to the legal range.
+        For 8-bit color samples, the legal range is 16-235.
+        A value of <code>00</code> indicates that these limitations should be enforced, while a value of <code>01</code> allows the full range of possible values for each component, even if the resulting color is out of bounds for the color system.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+#### Examples
+
+- `video/webm;codecs="vp09.02.10.10.01.09.16.09.01,opus"`
+  - : VP9 video, profile 2 level 1.0, with 10-bit YUV content using 4:2:0 chroma subsampling, BT.2020 primaries, ST 2084 EOTF (HDR SMPTE), BT.2020 non-constant luminance color matrix, and full-range chroma and luma encoding. The audio is in Opus format.
 
 ### ISO Base Media File Format: MP4, QuickTime, and 3GP
 
@@ -293,19 +578,19 @@ All media types based upon the [ISO Base Media File Format](https://en.wikipedia
 
 Each codec described by the `codecs` parameter can be specified either as the container's name (`3gp`, `mp4`, `quicktime`, etc.) or as the container name plus additional parameters to specify the codec and its configuration. Each entry in the codec list may contain some number of components, separated by periods (`.`).
 
-The syntax for the value of `codecs` varies by codec; however, it always starts with the codec's four-character identifier, a period separator (`.`), followed by the Object Type Indication (OTI) value for the specific data format. For most codecs, the OTI is a two-digit hexadecimal number; however, it's six hexadecimal digits for [AVC (H.264)](</en-US/docs/Web/Media/Formats/Video_codecs#avc_(h.264)>).
+The syntax for the value of `codecs` varies by codec; however, it always starts with the codec's four-character identifier, a period separator (`.`), followed by the Object Type Indication (OTI) value for the specific data format. For most codecs, the OTI is a two-digit hexadecimal number; however, it's six hexadecimal digits for [AVC (H.264)](/en-US/docs/Web/Media/Formats/Video_codecs#avc_h.264).
 
 Thus, the syntaxes for each of the supported codecs look like this:
 
 - `cccc[.pp]*` (Generic ISO BMFF)
   - : Where `cccc` is the four-character ID for the codec and `pp` is where zero or more two-character encoded property values go.
 - `mp4a.oo[.A]` (MPEG-4 audio)
-  - : Where `oo` is the Object Type Indication value describing the contents of the media more precisely and `A` is the one-digit _audio_ OTI. The possible values for the OTI can be found on the MP4 Registration Authority web site's [Object Types page](https://mp4ra.org/#/object_types). For example, Opus audio in an MP4 file is `mp4a.ad`. For further details, see [MPEG-4 audio](#mpeg-4_audio).
+  - : Where `oo` is the Object Type Indication value describing the contents of the media more precisely and `A` is the one-digit _audio_ OTI. The possible values for the OTI can be found on the MP4 Registration Authority website's [Object Types page](https://mp4ra.org/registered-types/object-types). For example, Opus audio in an MP4 file is `mp4a.ad`. For further details, see [MPEG-4 audio](#mpeg-4_audio).
 - `mp4v.oo[.V]` (MPEG-4 video)
   - : Here, `oo` is again the OTI describing the contents more precisely, while `V` is the one-digit _video_ OTI.
-- `avc1.oo[.PPCCLL]` (AVC video)
+- `avc1[.PPCCLL]` (AVC video)
 
-  - : `oo` is the OTI describing the contents, while `PPCCLL` is six hexadecimal digits specifying the profile number (`PP`), constraint set flags (`CC`), and level (`LL`). See [AVC profiles](#avc_profiles) for the possible values of `PP`.
+  - : `PPCCLL` are six hexadecimal digits specifying the profile number (`PP`), constraint set flags (`CC`), and level (`LL`). See [AVC profiles](#avc_profiles) for the possible values of `PP`.
 
     The constraint set flags byte is comprised of one-bit Boolean flags, with the most significant bit being referred to as flag 0 (or `constraint_set0_flag`, in some resources), and each successive bit being numbered one higher. Currently, only flags 0 through 2 are used; the other five bits _must_ be zero. The meanings of the flags vary depending on the profile being used.
 
@@ -348,13 +633,14 @@ When the value of an entry in the `codecs` list begins with `mp4a`, the syntax o
 mp4a.oo[.A]
 ```
 
-Here, `oo` is the two-digit hexadecimal Object Type Indication which specifies the codec class being used for the media. The OTIs are assigned by the [MP4 Registration Authority](https://mp4ra.org/), which maintains a [list of the possible OTI values](https://mp4ra.org/#/object_types). A special value is `40`; this indicates that the media is MPEG-4 audio (ISO/IEC 14496 Part 3). In order to be more specific still, a third component—the Audio Object Type—is added for OTI `40` to narrow the type down to a specific subtype of MPEG-4.
+Here, `oo` is the two-digit hexadecimal Object Type Indication which specifies the codec class being used for the media. The OTIs are assigned by the [MP4 Registration Authority](https://mp4ra.org/), which maintains a [list of the possible OTI values](https://mp4ra.org/registered-types/object-types). A special value is `40`; this indicates that the media is MPEG-4 audio (ISO/IEC 14496 Part 3). In order to be more specific still, a third component—the Audio Object Type—is added for OTI `40` to narrow the type down to a specific subtype of MPEG-4.
 
 The Audio Object Type is specified as a one or two digit _decimal_ value (unlike most other values in the `codecs` parameter, which use hexadecimal). For example, MPEG-4's AAC-LC has an audio object type number of `2`, so the full `codecs` value representing AAC-LC is `mp4a.40.2`.
 
 Thus, ER AAC LC, whose Audio Object Type is 17, can be represented using the full `codecs` value `mp4a.40.17`. Single digit values can be given either as one digit (which is the best choice, since it will be the most broadly compatible) or with a leading zero padding it to two digits, such as `mp4a.40.02`.
 
-> **Note:** The specification originally mandated that the Audio Object Type number in the third component be only one decimal digit. However, amendments to the specification over time extended the range of these values well beyond one decimal digit, so now the third parameter may be either one or two digits. Padding values below 10 with a leading `0` is optional. Older implementations of MPEG-4 codecs may not support two-digit values, however, so using a single digit when possible will maximize compatibility.
+> [!NOTE]
+> The specification originally mandated that the Audio Object Type number in the third component be only one decimal digit. However, amendments to the specification over time extended the range of these values well beyond one decimal digit, so now the third parameter may be either one or two digits. Padding values below 10 with a leading `0` is optional. Older implementations of MPEG-4 codecs may not support two-digit values, however, so using a single digit when possible will maximize compatibility.
 
 The Audio Object Types are defined in ISO/IEC 14496-3 subpart 1, section 1.5.1. The table below provides a basic list of the Audio Object Types and in the case of the more common object types provides a list of the profiles supporting it, but you should refer to the specification for details if you need to know more about the inner workings of any given MPEG-4 audio type.
 
@@ -601,10 +887,7 @@ The Audio Object Types are defined in ISO/IEC 14496-3 subpart 1, section 1.5.1. 
       <td>
         <p>LD MPEG Surround (Low Delay MPEG Surround)</p>
         <p>
-          Defined in
-          <a href="https://www.iso.org/standard/54838.html"
-            >ISO/IEC 14496-3:2009/Amd.2:2010(E)</a
-          >.
+          Defined in <a href="https://www.iso.org/standard/54838.html">ISO/IEC 14496-3:2009/Amd.2:2010(E)</a>.
         </p>
       </td>
       <td></td>
@@ -632,370 +915,18 @@ The basic form for a WebM `codecs` parameter is to list one or more of the four 
 
 The strings `vp8.0` and `vp9.0` also work, but are not recommended.
 
-#### ISO Base Media File Format syntax
-
-As part of a move toward a standardized and powerful format for the `codecs` parameter, WebM is moving toward describing _video_ content using a syntax based on that defined by the [ISO Base Media File Format](#iso-bmff). This syntax is defined in [VP Codec ISO Media File Format Binding](https://www.webmproject.org/vp9/mp4/), in the section [Codecs Parameter String](https://www.webmproject.org/vp9/mp4/#codecs-parameter-string). The audio codec continues to be indicated as either `vorbis` or `opus`.
-
-In this format, the `codecs` parameter's value begins with a four-character code identifying the codec being used in the container, which is then followed by a series of period (`.`) separated two-digit values.
-
-```plain
-cccc.PP.LL.DD
-cccc.PP.LL.DD.CC.cp.tc.mc.FF
-```
-
-The first four components are required; everything from `CC` (chroma subsampling) onward is optional, but all or nothing. Each of these components is described in the following table. Following the table are some examples.
-
-<table class="standard-table">
-  <caption>
-    WebM codecs parameter components
-  </caption>
-  <thead>
-    <tr>
-      <th scope="col">Component</th>
-      <th scope="col">Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>cccc</code></td>
-      <td>
-        <p>
-          A four-character code indicating which indicates which of the possible
-          codecs is being described. Potential values are:
-        </p>
-        <table class="standard-table">
-          <caption>
-            Four-character codes for WebM-supported codecs
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">Four-character code</th>
-              <th scope="col">Codec</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>vp08</code></td>
-              <td>VP8</td>
-            </tr>
-            <tr>
-              <td><code>vp09</code></td>
-              <td>VP9</td>
-            </tr>
-            <tr>
-              <td><code>vp10</code></td>
-              <td>VP10</td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td><code>PP</code></td>
-      <td>
-        <p>
-          The two-digit profile number, padded with leading zeroes if necessary
-          to be exactly two digits.
-        </p>
-        <table class="standard-table">
-          <caption>
-            WebM profile numbers
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">Profile</th>
-              <th scope="col">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>00</code></td>
-              <td>
-                Only 4:2:0 (chroma subsampled both horizontally and vertically).
-                Allows only 8 bits per color component.
-              </td>
-            </tr>
-            <tr>
-              <td><code>01</code></td>
-              <td>
-                All chroma subsampling formats are allowed. Allows only 8 bits
-                per color component.
-              </td>
-            </tr>
-            <tr>
-              <td><code>02</code></td>
-              <td>
-                Only 4:2:0 (chroma subsampled both horizontally and vertically).
-                Supports 8, 10, or 12 bits per color sample component.
-              </td>
-            </tr>
-            <tr>
-              <td><code>03</code></td>
-              <td>
-                All chroma subsampling formats are allowed. Supports 8, 10, or
-                12 bits per color sample component.
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td><code>LL</code></td>
-      <td>
-        The two-digit level number. The level number is a fixed-point notation,
-        where the first digit is the ones digit, and the second digit represents
-        tenths. For example, level 3 is <code>30</code> and level 6.1 is
-        <code>61</code>.
-      </td>
-    </tr>
-    <tr>
-      <td><code>DD</code></td>
-      <td>
-        The bit depth of the luma and color component values; permitted values
-        are 8, 10, and 12.
-      </td>
-    </tr>
-    <tr>
-      <td><code>CC</code></td>
-      <td>
-        <p>
-          A two-digit value indicating which chroma subsampling format to use.
-          The following table lists permitted values; see
-          {{SectionOnPage("en-US/docs/Web/Media/Formats/Video_concepts", "Chroma subsampling")}}
-          for additional information about this topic and others.
-        </p>
-        <table class="standard-table">
-          <caption>
-            WebM chroma subsampling identifiers
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">Value</th>
-              <th scope="col">Chroma subsampling format</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>00</code></td>
-              <td>
-                4:2:0 with the chroma samples sited interstitially between the
-                pixels
-              </td>
-            </tr>
-            <tr>
-              <td><code>01</code></td>
-              <td>
-                4:2:0 chroma subsampling with the samples collocated with luma
-                (0, 0)
-              </td>
-            </tr>
-            <tr>
-              <td><code>02</code></td>
-              <td>
-                4:2:2 chroma subsampling (4 out of each 4 horizontal pixels'
-                luminance are used)
-              </td>
-            </tr>
-            <tr>
-              <td><code>03</code></td>
-              <td>
-                4:4:4 chroma subsampling (every pixel's luminance and
-                chrominance are both retained)
-              </td>
-            </tr>
-            <tr>
-              <td><code>04</code></td>
-              <td><em>Reserved</em></td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td><code>cp</code></td>
-      <td>
-        <p>
-          A two-digit integer specifying which of the color primaries from
-          Section 8.1 of the
-          <a href="https://www.itu.int/rec/T-REC-H.273/en"
-            >ISO/IEC 23001-8:2016</a
-          >
-          standard. This component, and every component after it, is optional.
-        </p>
-        <p>The possible values of the color primaries component are:</p>
-        <table class="standard-table">
-          <caption>
-            ISO/IEC Color primary identifiers
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">Value</th>
-              <th scope="col">Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>00</code></td>
-              <td><em>Reserved for future use by ITU or ISO/IEC</em></td>
-            </tr>
-            <tr>
-              <td><code>01</code></td>
-              <td>
-                BT.709, sRGB, sYCC. BT.709 is the standard for high definition
-                (HD) television; sRGB is the most common color space used for
-                computer displays. Broadcast BT.709 uses 8-bit color depth with
-                the legal range being from 16 (black) to 235 (white).
-              </td>
-            </tr>
-            <tr>
-              <td><code>02</code></td>
-              <td>
-                Image characteristics are unknown, or are to be determined by
-                the application
-              </td>
-            </tr>
-            <tr>
-              <td><code>03</code></td>
-              <td><em>Reserved for future use by ITU or ISO/IEC</em></td>
-            </tr>
-            <tr>
-              <td><code>04</code></td>
-              <td>
-                BT.470 System M, NTSC (standard definition television in the
-                United States)
-              </td>
-            </tr>
-            <tr>
-              <td><code>05</code></td>
-              <td>
-                BT.470 System B, G; BT.601; BT.1358 625; BT.1700 625 PAL and 625
-                SECAM
-              </td>
-            </tr>
-            <tr>
-              <td><code>06</code></td>
-              <td>
-                BT.601 525; BT.1358 525 or 625; BT.1700 NTSC; SMPTE 170M.
-                <em>Functionally identical to <code>7</code>.</em>
-              </td>
-            </tr>
-            <tr>
-              <td><code>70</code></td>
-              <td>
-                {{Glossary("SMPTE")}} 240M (historical).
-                <em>Functionally identical to <code>6</code>.</em>
-              </td>
-            </tr>
-            <tr>
-              <td><code>08</code></td>
-              <td>Generic film</td>
-            </tr>
-            <tr>
-              <td><code>09</code></td>
-              <td>
-                BT.2020; BT.2100. Used for ultra-high definition (4K) High
-                Dynamic Range (HDR) video, these have a very wide color {{glossary("gamut")}}
-                and support 10-bit and 12-bit color component depths.
-              </td>
-            </tr>
-            <tr>
-              <td><code>10</code></td>
-              <td>
-                SMPTE ST 428 (D-Cinema Distribution Master: Image
-                characteristics). Defines the uncompressed image characteristics
-                for DCDM.
-              </td>
-            </tr>
-            <tr>
-              <td><code>11</code></td>
-              <td>
-                SMPTE RP 431 (D-Cinema Quality: Reference projector and
-                environment). Describes the reference projector and environment
-                conditions that provide a consistent film presentation
-                experience.
-              </td>
-            </tr>
-            <tr>
-              <td><code>12</code></td>
-              <td>
-                SMPTE EG 432 (Digital Source Processing: Color Processing for
-                D-Cinema). Engineering guideline making color signal decoding
-                recommendations for digital movies.
-              </td>
-            </tr>
-            <tr>
-              <td><code>13</code> – <code>21</code></td>
-              <td><em>Reserved for future use by ITU-T or ISO/IEC</em></td>
-            </tr>
-            <tr>
-              <td><code>22</code></td>
-              <td>EBU Tech 3213-E</td>
-            </tr>
-            <tr>
-              <td><code>23</code> – <code>255</code></td>
-              <td><em>Reserved for future use by ITU-T or ISO/IEC</em></td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td><code>tc</code></td>
-      <td>
-        A two-digit integer indicating the
-        <code>transferCharacteristics</code> for the video. This value is from
-        Section 8.2 of
-        <a href="https://www.itu.int/rec/T-REC-H.273/en">ISO/IEC 23001-8:2016</a
-        >, and indicates the transfer characteristics to be used when adapting
-        the decoded color to the render target.
-      </td>
-    </tr>
-    <tr>
-      <td><code>mc</code></td>
-      <td>
-        The two-digit value for the <code>matrixCoefficients</code> property.
-        This value comes from the table in Section 8.3 of the
-        <a href="https://www.itu.int/rec/T-REC-H.273/en"
-          >ISO/IEC 23001-8:2016</a
-        >
-        specification. This value indicates which set of coefficients to use
-        when mapping from the native red, blue, and green primaries to the luma
-        and chroma signals. These coefficients are in turn used with the
-        equations found in that same section.
-      </td>
-    </tr>
-    <tr>
-      <td><code>FF</code></td>
-      <td>
-        Indicates whether to restrict the black level and color range of each
-        color component to the legal range. For 8-bit color samples, the legal
-        range is 16-235. A value of <code>00</code> indicates that these
-        limitations should be enforced, while a value of <code>01</code> allows
-        the full range of possible values for each component, even if the
-        resulting color is out of bounds for the color system.
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-#### WebM media type examples
-
-- `video/webm;codecs="vp08.00.41.08,vorbis"`
-  - : VP8 video, profile 0 level 4.1, using 8-bit YUV with 4:2:0 chroma subsampling, using BT.709 color primaries, transfer function, and matrix coefficients, with the luminance and chroma values encoded within the legal ("studio") range. The audio is in Vorbis format.
-- `video/webm;codecs="vp09.02.10.10.01.09.16.09.01,opus"`
-  - : VP9 video, profile 2 level 1.0, with 10-bit YUV content using 4:2:0 chroma subsampling, BT.2020 primaries, ST 2084 EOTF (HDR SMPTE), BT.2020 non-constant luminance color matrix, and full-range chroma and luma encoding. The audio is in Opus format.
-
 ## Using the codecs parameter
 
 You can use the `codecs` parameter in a few situations. Firstly, you can use it with the {{HTMLElement("source")}} element when creating an {{HTMLElement("audio")}} or {{HTMLElement("video")}} element, in order to establish a group of options for the browser to choose from when selecting the format of the media to present to the user in the element.
 
-You can also use the codecs parameter when specifying a MIME media type to the {{domxref("MediaSource.isTypeSupported()")}} method; this method returns a Boolean which indicates whether or not the media is likely to work on the current device.
+You can also use the codecs parameter when specifying a MIME media type to the {{domxref("MediaSource/isTypeSupported_static", "MediaSource.isTypeSupported()")}} method; this method returns a Boolean which indicates whether or not the media is likely to work on the current device.
 
 ## See also
 
 - [Web media technologies](/en-US/docs/Web/Media)
+- The {{HTMLElement("source")}} element, child of the {{HTMLElement("audio")}} and {{HTMLElement("video")}} elements
 - [Guide to media types and formats on the web](/en-US/docs/Web/Media/Formats)
 - [Guide to audio codecs used on the web](/en-US/docs/Web/Media/Formats/Audio_codecs)
 - [Guide to video codecs used on the web](/en-US/docs/Web/Media/Formats/Video_codecs)
 - [Codecs used by WebRTC](/en-US/docs/Web/Media/Formats/WebRTC_codecs)
+- [Getting the correct HTML codecs parameter for an AV1 video](https://jakearchibald.com/2022/html-codecs-parameter-for-av1/)

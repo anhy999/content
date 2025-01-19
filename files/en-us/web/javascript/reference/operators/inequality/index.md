@@ -1,11 +1,7 @@
 ---
 title: Inequality (!=)
 slug: Web/JavaScript/Reference/Operators/Inequality
-tags:
-  - JavaScript
-  - Language feature
-  - Operator
-  - Reference
+page-type: javascript-operator
 browser-compat: javascript.operators.inequality
 ---
 
@@ -107,6 +103,6 @@ console.log(object1 != object1); // false
 
 ## See also
 
-- [Equality operator](/en-US/docs/Web/JavaScript/Reference/Operators/Equality)
-- [Strict equality operator](/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality)
-- [Strict inequality operator](/en-US/docs/Web/JavaScript/Reference/Operators/Strict_inequality)
+- [Equality (`==`)](/en-US/docs/Web/JavaScript/Reference/Operators/Equality)
+- [Strict equality (`===`)](/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality)
+- [Strict inequality (`!==`)](/en-US/docs/Web/JavaScript/Reference/Operators/Strict_inequality)

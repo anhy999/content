@@ -1,19 +1,9 @@
 ---
-title: MediaTrackSettings.groupId
+title: "MediaTrackSettings: groupId property"
+short-title: groupId
 slug: Web/API/MediaTrackSettings/groupId
 page-type: web-api-instance-property
-tags:
-  - API
-  - Media
-  - Media Capture and Streams API
-  - Media Streams API
-  - MediaTrackSettings
-  - Property
-  - Reference
-  - Settings
-  - WebRTC
-  - groupId
-browser-compat: api.MediaTrackSettings.groupId
+browser-compat: api.MediaStreamTrack.applyConstraints.groupId_constraint
 ---
 
 {{APIRef("Media Capture and Streams")}}
@@ -61,8 +51,7 @@ value can't be changed.
 
 ## Examples
 
-See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints", "Example:
-  Constraint exerciser")}} for an example.
+See the [Constraint exerciser](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints#example_constraint_exerciser) example.
 
 ## Specifications
 

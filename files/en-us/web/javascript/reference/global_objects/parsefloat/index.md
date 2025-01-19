@@ -1,10 +1,7 @@
 ---
 title: parseFloat()
 slug: Web/JavaScript/Reference/Global_Objects/parseFloat
-tags:
-  - JavaScript
-  - Method
-  - Reference
+page-type: javascript-function
 browser-compat: javascript.builtins.parseFloat
 ---
 
@@ -23,13 +20,14 @@ parseFloat(string)
 ### Parameters
 
 - `string`
-  - : The value to parse, [coerced to a string](/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion). Leading {{glossary("whitespace")}} in this argument is ignored.
+  - : The value to parse, [coerced to a string](/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion). Leading {{Glossary("whitespace")}} in this argument is ignored.
 
 ### Return value
 
 A floating point number parsed from the given `string`, or {{jsxref("NaN")}} when the first non-whitespace character cannot be converted to a number.
 
-> **Note:** JavaScript does not have the distinction of "floating point numbers" and "integers" on the language level. [`parseInt()`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) and `parseFloat()` only differ in their parsing behavior, but not necessarily their return values. For example, `parseInt("42")` and `parseFloat("42")` would return the same value: a {{jsxref("Number")}} 42.
+> [!NOTE]
+> JavaScript does not have the distinction of "floating point numbers" and "integers" on the language level. [`parseInt()`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) and `parseFloat()` only differ in their parsing behavior, but not necessarily their return values. For example, `parseInt("42")` and `parseFloat("42")` would return the same value: a {{jsxref("Number")}} 42.
 
 ## Description
 
@@ -122,7 +120,7 @@ BigInt("900719925474099267");
 
 ## See also
 
-- {{jsxref("parseInt", "parseInt()")}}
+- {{jsxref("parseInt()")}}
 - {{jsxref("Number.parseFloat()")}}
 - {{jsxref("Number.parseInt()")}}
 - {{jsxref("Number.prototype.toFixed()")}}

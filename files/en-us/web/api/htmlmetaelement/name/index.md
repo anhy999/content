@@ -1,19 +1,14 @@
 ---
-title: HTMLMetaElement.name
+title: "HTMLMetaElement: name property"
+short-title: name
 slug: Web/API/HTMLMetaElement/name
 page-type: web-api-instance-property
-tags:
-  - API
-  - HTML DOM
-  - HTMLMetaElement
-  - Property
-  - Reference
 browser-compat: api.HTMLMetaElement.name
 ---
 
 {{APIRef("HTML DOM")}}
 
-The **`HTMLMetaElement.name`** is used in combination with {{domxref("HTMLMetaElement.content")}} to define the name-value pairs for the metadata of a document.
+The **`HTMLMetaElement.name`** property is used in combination with {{domxref("HTMLMetaElement.content")}} to define the name-value pairs for the metadata of a document.
 The `name` attribute defines the metadata name and the `content` attribute defines the value.
 
 ## Value
@@ -29,7 +24,7 @@ The `name` value is logged to the console, showing that [keywords](/en-US/docs/W
 
 ```js
 // given <meta name="keywords" content="documentation, HTML, web technologies">
-let meta = document.querySelector("meta");
+const meta = document.querySelector("meta");
 console.log(meta.name);
 // "keywords"
 ```

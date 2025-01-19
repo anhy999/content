@@ -1,21 +1,14 @@
 ---
-title: USBDevice.controlTransferIn()
+title: "USBDevice: controlTransferIn() method"
+short-title: controlTransferIn()
 slug: Web/API/USBDevice/controlTransferIn
 page-type: web-api-instance-method
-tags:
-  - API
-  - Method
-  - Reference
-  - USB
-  - USBDevice
-  - WebUSB
-  - WebUSB API
-  - controlTransferIn
-  - Experimental
+status:
+  - experimental
 browser-compat: api.USBDevice.controlTransferIn
 ---
 
-{{APIRef("WebUSB API")}}{{SeeCompatTable}}
+{{APIRef("WebUSB API")}}{{SeeCompatTable}}{{SecureContext_Header}}{{AvailableInWorkers}}
 
 The **`controlTransferIn()`** method of the {{domxref("USBDevice")}} interface returns a {{jsxref("Promise")}} that resolves with a {{domxref("USBInTransferResult")}} when a command or status request has been transmitted to (received by) the USB device.
 
@@ -38,13 +31,12 @@ controlTransferIn(setup, length)
     - `request`
       - : A vendor-specific command.
     - `value`
-      - : Vender-specific request parameters.
+      - : Vendor-specific request parameters.
     - `index`
       - : The interface number of the recipient.
 
 - `length`
-  - : The maximum number of bytes to read from the device.
-  - The actual data is in the {{domxref("USBInTransferResult")}} in the resolved Promise.
+  - : The maximum number of bytes to read from the device. The actual data is in the {{domxref("USBInTransferResult")}} in the resolved Promise.
 
 ### Return value
 

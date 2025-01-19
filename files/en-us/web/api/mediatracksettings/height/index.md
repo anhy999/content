@@ -1,20 +1,9 @@
 ---
-title: MediaTrackSettings.height
+title: "MediaTrackSettings: height property"
+short-title: height
 slug: Web/API/MediaTrackSettings/height
 page-type: web-api-instance-property
-tags:
-  - API
-  - Media
-  - Media Capture and Streams API
-  - Media Streams API
-  - MediaTrackSettings
-  - Property
-  - Reference
-  - Settings
-  - Video
-  - WebRTC
-  - height
-browser-compat: api.MediaTrackSettings.height
+browser-compat: api.MediaStreamTrack.applyConstraints.height_constraint
 ---
 
 {{APIRef("Media Capture and Streams")}}
@@ -39,8 +28,7 @@ configured.
 
 ## Examples
 
-See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints", "Example:
-  Constraint exerciser")}} for an example.
+See the [Constraint exerciser](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints#example_constraint_exerciser) example.
 
 ## Specifications
 

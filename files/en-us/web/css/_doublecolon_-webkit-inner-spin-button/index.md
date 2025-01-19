@@ -1,15 +1,9 @@
 ---
-title: '::-webkit-inner-spin-button'
+title: "::-webkit-inner-spin-button"
 slug: Web/CSS/::-webkit-inner-spin-button
 page-type: css-pseudo-element
-tags:
-  - CSS
-  - NeedsBrowserCompatibility
-  - NeedsMobileBrowserCompatibility
-  - Non-standard
-  - Pseudo-element
-  - Reference
-  - Selector
+status:
+  - non-standard
 browser-compat: css.selectors.-webkit-inner-spin-button
 ---
 
@@ -20,7 +14,9 @@ The **`::-webkit-inner-spin-button`** CSS pseudo-element is used to style the in
 ## Syntax
 
 ```css
-::-webkit-inner-spin-button
+::-webkit-inner-spin-button {
+  /* ... */
+}
 ```
 
 ## Examples
@@ -59,6 +55,5 @@ Not part of any standard.
 
 ## See also
 
-- {{cssxref("::-webkit-outer-spin-button")}}
 - {{cssxref("::-webkit-textfield-decoration-container")}}
 - [Styling Form Controls – WebKit](https://trac.webkit.org/wiki/Styling%20Form%20Controls#inputelement)

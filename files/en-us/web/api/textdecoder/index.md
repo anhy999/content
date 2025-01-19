@@ -2,21 +2,12 @@
 title: TextDecoder
 slug: Web/API/TextDecoder
 page-type: web-api-interface
-tags:
-  - API
-  - DOM
-  - Encoding
-  - Interface
-  - Reference
-  - TextDecoder
 browser-compat: api.TextDecoder
 ---
 
-{{APIRef("Encoding API")}}
+{{APIRef("Encoding API")}}{{AvailableInWorkers}}
 
 The **`TextDecoder`** interface represents a decoder for a specific text encoding, such as `UTF-8`, `ISO-8859-2`, `KOI8-R`, `GBK`, etc. A decoder takes a stream of bytes as input and emits a stream of code points.
-
-{{AvailableInWorkers}}
 
 ## Constructor
 
@@ -28,7 +19,7 @@ The **`TextDecoder`** interface represents a decoder for a specific text encodin
 _The `TextDecoder` interface doesn't inherit any properties._
 
 - {{DOMxRef("TextDecoder.encoding")}} {{ReadOnlyInline}}
-  - : A string containing the name of the decoder, that is a string describing the method the `TextDecoder` will use.
+  - : A string containing the name of the decoder, which is a string describing the method the `TextDecoder` will use.
 - {{DOMxRef("TextDecoder.fatal")}} {{ReadOnlyInline}}
   - : A {{jsxref('Boolean')}} indicating whether the error mode is fatal.
 - {{DOMxRef("TextDecoder.ignoreBOM")}} {{ReadOnlyInline}}
@@ -86,5 +77,5 @@ console.log(win1251decoder.decode(bytes)); // Привет, мир!
 ## See also
 
 - The {{DOMxRef("TextEncoder")}} interface describing the inverse operation.
-- A [shim](https://github.com/inexorabletash/text-encoding) allowing to use this interface in browsers that don't support it.
+- A [shim](https://github.com/inexorabletash/text-encoding) allowing to use this interface in browsers that do not support it.
 - [Node.js supports global export from v11.0.0](https://nodejs.org/api/util.html#util_class_util_textdecoder)

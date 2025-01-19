@@ -1,12 +1,7 @@
 ---
 title: await
 slug: Web/JavaScript/Reference/Operators/await
-tags:
-  - Function
-  - JavaScript
-  - Language feature
-  - Operator
-  - Primary Expression
+page-type: javascript-operator
 browser-compat: javascript.operators.await
 ---
 
@@ -77,31 +72,31 @@ f1();
 [Thenable objects](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#thenables) are resolved just the same as actual `Promise` objects.
 
 ```js
-async function f() {
+async function f2() {
   const thenable = {
-    then(resolve, _reject) {
+    then(resolve) {
       resolve("resolved!");
     },
   };
   console.log(await thenable); // "resolved!"
 }
 
-f();
+f2();
 ```
 
 They can also be rejected:
 
 ```js
-async function f() {
+async function f2() {
   const thenable = {
-    then(resolve, reject) {
+    then(_, reject) {
       reject(new Error("rejected!"));
     },
   };
   await thenable; // Throws Error: rejected!
 }
 
-f();
+f2();
 ```
 
 ### Conversion to promise
@@ -120,7 +115,7 @@ async function f3() {
 f3();
 ```
 
-### Promise rejection
+### Handling rejected promises
 
 If the `Promise` is rejected, the rejected value is thrown.
 
@@ -136,8 +131,6 @@ async function f4() {
 f4();
 ```
 
-### Handling rejected promises
-
 You can handle rejected promises without a `try` block by chaining a [`catch()`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch) handler before awaiting the promise.
 
 ```js
@@ -148,11 +141,24 @@ const response = await promisedFunction().catch((err) => {
 // response will be "default response" if the promise is rejected
 ```
 
+This is built on the assumption that `promisedFunction()` never synchronously throws an error, but always returns a rejected promise. This is the case for most properly-designed promise-based functions, which usually look like:
+
+```js
+function promisedFunction() {
+  // Immediately return a promise to minimize chance of an error being thrown
+  return new Promise((resolve, reject) => {
+    // do something async
+  });
+}
+```
+
+However, if `promisedFunction()` does throw an error synchronously, the error won't be caught by the `catch()` handler. In this case, the `try...catch` statement is necessary.
+
 ### Top level await
 
 You can use the `await` keyword on its own (outside of an async function) at the top level of a [module](/en-US/docs/Web/JavaScript/Guide/Modules). This means that modules with child modules that use `await` will wait for the child modules to execute before they themselves run, all while not blocking other child modules from loading.
 
-Here is an example of a simple module using the [Fetch API](/en-US/docs/Web/API/Fetch_API) and specifying await within the [`export`](/en-US/docs/Web/JavaScript/Reference/Statements/export) statement. Any modules that include this will wait for the fetch to resolve before running any code.
+Here is an example of a module using the [Fetch API](/en-US/docs/Web/API/Fetch_API) and specifying await within the [`export`](/en-US/docs/Web/JavaScript/Reference/Statements/export) statement. Any modules that include this will wait for the fetch to resolve before running any code.
 
 ```js
 // fetch request
@@ -163,7 +169,7 @@ export default await colors;
 
 ### Control flow effects of await
 
-When an `await` is encountered in code (either in an async function or in a module), the awaited expression is executed, while all code that depends on the expression's value is paused and pushed into the [microtask queue](/en-US/docs/Web/JavaScript/EventLoop). The main thread is then freed for the next task in the event loop. This happens even if the awaited value is an already-resolved promise or not a promise. For example, consider the following code:
+When an `await` is encountered in code (either in an async function or in a module), the awaited expression is executed, while all code that depends on the expression's value is paused and pushed into the [microtask queue](/en-US/docs/Web/JavaScript/Event_loop). The main thread is then freed for the next task in the event loop. This happens even if the awaited value is an already-resolved promise or not a promise. For example, consider the following code:
 
 ```js
 async function foo(name) {
@@ -231,7 +237,7 @@ function foo(name) {
 
 While the extra `then()` handler is not necessary, and the handler can be merged with the executor passed to the constructor, the `then()` handler's existence means the code will take one extra tick to complete. The same happens for `await`. Therefore, make sure to use `await` only when necessary (to unwrap promises into their values).
 
-Other microtasks can execute before the async function resumes. This example uses [`queueMicrotask()`](/en-US/docs/Web/API/queueMicrotask) to demonstrate how the microtask queue is processed when each `await` expression is encountered.
+Other microtasks can execute before the async function resumes. This example uses {{domxref("Window.queueMicrotask()", "queueMicrotask()")}} to demonstrate how the microtask queue is processed when each `await` expression is encountered.
 
 ```js
 let i = 0;
@@ -286,7 +292,7 @@ async function noAwait() {
 }
 ```
 
-However, consider the case where `someAsyncTask` asynchronously throws an error.
+However, consider the case where `lastAsyncTask` asynchronously throws an error.
 
 ```js
 async function lastAsyncTask() {
@@ -323,7 +329,7 @@ withAwait();
 //    at async withAwait
 ```
 
-However, there's a little performance penalty coming with `return await` because the promise has to be unwrapped and wrapped again.
+Contrary to some popular belief, `return await promise` is at least as fast as `return promise`, due to how the spec and engines optimize the resolution of native promises. There's a proposal to [make `return promise` faster](https://github.com/tc39/proposal-faster-promise-adoption) and you can also read about [V8's optimization on async functions](https://v8.dev/blog/fast-async). Therefore, except for stylistic reasons, `return await` is almost always preferable.
 
 ## Specifications
 
@@ -337,5 +343,6 @@ However, there's a little performance penalty coming with `return await` because
 
 - {{jsxref("Statements/async_function", "async function")}}
 - [`async function` expression](/en-US/docs/Web/JavaScript/Reference/Operators/async_function)
-- {{jsxref("AsyncFunction")}} object
-- [Top level await](https://v8.dev/features/top-level-await) on v8.dev
+- {{jsxref("AsyncFunction")}}
+- [Top-level await](https://v8.dev/features/top-level-await) on v8.dev (2019)
+- [typescript-eslint rule: `return-await`](https://typescript-eslint.io/rules/return-await/)

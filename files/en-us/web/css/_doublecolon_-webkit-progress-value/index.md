@@ -1,13 +1,9 @@
 ---
-title: '::-webkit-progress-value'
+title: "::-webkit-progress-value"
 slug: Web/CSS/::-webkit-progress-value
 page-type: css-pseudo-element
-tags:
-  - CSS
-  - Non-standard
-  - Pseudo-element
-  - Reference
-  - Selector
+status:
+  - non-standard
 browser-compat: css.selectors.-webkit-progress-value
 ---
 
@@ -15,12 +11,15 @@ browser-compat: css.selectors.-webkit-progress-value
 
 The **`::-webkit-progress-value`** [CSS](/en-US/docs/Web/CSS) [pseudo-element](/en-US/docs/Web/CSS/Pseudo-elements) represents the filled-in portion of the bar of a {{HTMLElement("progress")}} element. It is a child of the {{cssxref("::-webkit-progress-bar")}} pseudo-element.
 
-> **Note:** In order to let `::-webkit-progress-value` take effect, {{cssxref("appearance")}} needs to be set to `none` on the `<progress>` element.
+> [!NOTE]
+> In order to let `::-webkit-progress-value` take effect, {{cssxref("appearance")}} needs to be set to `none` on the `<progress>` element.
 
 ## Syntax
 
 ```css
-::-webkit-progress-value
+::-webkit-progress-value {
+  /* ... */
+}
 ```
 
 ## Examples
@@ -71,4 +70,3 @@ Not part of any standard.
   - {{ cssxref("::-webkit-progress-inner-element") }}
 
 - {{ cssxref("::-moz-progress-bar") }}
-- {{ cssxref("::-ms-fill") }}

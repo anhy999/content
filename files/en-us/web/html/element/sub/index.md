@@ -1,19 +1,7 @@
 ---
-title: '<sub>: The Subscript element'
+title: "<sub>: The Subscript element"
 slug: Web/HTML/Element/sub
-tags:
-  - Baseline
-  - Element
-  - Footnotes
-  - HTML
-  - HTML text-level semantics
-  - HTML:Flow content
-  - HTML:Palpable Content
-  - HTML:Phrasing content
-  - Reference
-  - Subscript
-  - Web
-  - sub
+page-type: html-element
 browser-compat: html.elements.sub
 ---
 
@@ -22,63 +10,6 @@ browser-compat: html.elements.sub
 The **`<sub>`** [HTML](/en-US/docs/Web/HTML) element specifies inline text which should be displayed as subscript for solely typographical reasons. Subscripts are typically rendered with a lowered baseline using smaller text.
 
 {{EmbedInteractiveExample("pages/tabbed/sub.html", "tabbed-shorter")}}
-
-<table class="properties">
-  <tbody>
-    <tr>
-      <th scope="row">
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories"
-          >Content categories</a
-        >
-      </th>
-      <td>
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#flow_content"
-          >Flow content</a
-        >,
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#phrasing_content"
-          >phrasing content</a
-        >, palpable content.
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Permitted content</th>
-      <td>
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#phrasing_content"
-          >Phrasing content</a
-        >.
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Tag omission</th>
-      <td>{{no_tag_omission}}</td>
-    </tr>
-    <tr>
-      <th scope="row">Permitted parents</th>
-      <td>
-        Any element that accepts
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#phrasing_content"
-          >phrasing content</a
-        >.
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Implicit ARIA role</th>
-      <td>
-        <a href="https://www.w3.org/TR/html-aria/#dfn-no-corresponding-role"
-          >No corresponding role</a
-        >
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Permitted ARIA roles</th>
-      <td>Any</td>
-    </tr>
-    <tr>
-      <th scope="row">DOM interface</th>
-      <td>{{domxref("HTMLElement")}}</td>
-    </tr>
-  </tbody>
-</table>
 
 ## Attributes
 
@@ -94,23 +25,7 @@ Appropriate use cases for `<sub>` include (but aren't necessarily limited to):
 
 - Marking up footnote numbers. See [Footnote numbers](#footnote_numbers) for an example.
 - Marking up the subscript in mathematical variable numbers (although you may also consider using a [MathML](/en-US/docs/Web/MathML) formula for this). See [Variable subscripts](#variable_subscripts).
-- Denoting the number of atoms of a given element within a chemical formula (such as every developer's best friend, C
-
-  <sub>8</sub>
-
-  H
-
-  <sub>10</sub>
-
-  N
-
-  <sub>4</sub>
-
-  O
-
-  <sub>2</sub>
-
-  , otherwise known as "caffeine"). See [Chemical formulas](#chemical_formulas).
+- Denoting the number of atoms of a given element within a chemical formula (such as every developer's best friend, C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>, otherwise known as "caffeine"). See [Chemical formulas](#chemical_formulas).
 
 ## Examples
 
@@ -125,7 +40,7 @@ Traditional footnotes are denoted using numbers which are rendered in subscript.
 </p>
 ```
 
-The resulting output looks like this:
+#### Result
 
 {{EmbedLiveSample("Footnote_numbers", 650, 80)}}
 
@@ -133,14 +48,14 @@ The resulting output looks like this:
 
 In mathematics, families of variables related to the same concept (such as distances along the same axis) are represented using the same variable name with a subscript following. For example:
 
-```html
+```html-nolint
 <p>
   The horizontal coordinates' positions along the X-axis are represented as
   <var>x<sub>1</sub></var> … <var>x<sub>n</sub></var>.
 </p>
 ```
 
-The resulting output:
+#### Result
 
 {{EmbedLiveSample("Variable_subscripts", 650, 80)}}
 
@@ -158,9 +73,69 @@ Another example:
 </p>
 ```
 
-The output:
+#### Result
 
 {{EmbedLiveSample("Chemical_formulas", 650, 120)}}
+
+## Technical summary
+
+<table class="properties">
+  <tbody>
+    <tr>
+      <th scope="row">
+        <a href="/en-US/docs/Web/HTML/Content_categories"
+          >Content categories</a
+        >
+      </th>
+      <td>
+        <a href="/en-US/docs/Web/HTML/Content_categories#flow_content"
+          >Flow content</a
+        >,
+        <a href="/en-US/docs/Web/HTML/Content_categories#phrasing_content"
+          >phrasing content</a
+        >, palpable content.
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Permitted content</th>
+      <td>
+        <a href="/en-US/docs/Web/HTML/Content_categories#phrasing_content"
+          >Phrasing content</a
+        >.
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Tag omission</th>
+      <td>None, both the starting and ending tag are mandatory.</td>
+    </tr>
+    <tr>
+      <th scope="row">Permitted parents</th>
+      <td>
+        Any element that accepts
+        <a href="/en-US/docs/Web/HTML/Content_categories#phrasing_content"
+          >phrasing content</a
+        >.
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Implicit ARIA role</th>
+      <td>
+        <code
+          ><a href="/en-US/docs/Web/Accessibility/ARIA/Roles/structural_roles#structural_roles_with_html_equivalents">subscript</a
+          ></code
+        >
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Permitted ARIA roles</th>
+      <td>Any</td>
+    </tr>
+    <tr>
+      <th scope="row">DOM interface</th>
+      <td>{{domxref("HTMLElement")}}</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Specifications
 

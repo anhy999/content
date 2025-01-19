@@ -1,21 +1,15 @@
 ---
 title: String.prototype.indexOf()
 slug: Web/JavaScript/Reference/Global_Objects/String/indexOf
-tags:
-  - JavaScript
-  - Method
-  - Prototype
-  - Reference
-  - String
-  - indexOf
+page-type: javascript-instance-method
 browser-compat: javascript.builtins.String.indexOf
 ---
 
 {{JSRef}}
 
-The **`indexOf()`** method, given one argument: a substring to search for, searches the entire calling string, and returns the index of the first occurrence of the specified substring. Given a second argument: a number, the method returns the first occurrence of the specified substring at an index greater than or equal to the specified number.
+The **`indexOf()`** method of {{jsxref("String")}} values searches this string and returns the index of the first occurrence of the specified substring. It takes an optional starting position and returns the first occurrence of the specified substring at an index greater than or equal to the specified number.
 
-{{EmbedInteractiveExample("pages/js/string-indexof.html")}}
+{{EmbedInteractiveExample("pages/js/string-indexof.html", "taller")}}
 
 ## Syntax
 
@@ -28,9 +22,7 @@ indexOf(searchString, position)
 
 - `searchString`
 
-  - : Substring to search for, [coerced to a string](/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion).
-
-    If the method is called with no arguments, `searchString` is coerced to `"undefined"`. Therefore,`"undefined".indexOf()` returns `0` — because the substring `"undefined"` is found at position `0` in the string `"undefined"`. But `"undefine".indexOf()`, returns `-1` — because the substring `"undefined"` is not found in the string `"undefine"`.
+  - : Substring to search for. All values are [coerced to strings](/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion), so omitting it or passing `undefined` causes `indexOf()` to search for the string `"undefined"`, which is rarely what you want.
 
 - `position` {{optional_inline}}
 
@@ -73,7 +65,7 @@ Strings are zero-indexed: The index of a string's first character is `0`, and th
 
 ```js
 "Blue Whale".indexOf("Blue"); // returns  0
-"Blue Whale".indexOf("Blute"); // returns -1
+"Blue Whale".indexOf("Wale"); // returns -1
 "Blue Whale".indexOf("Whale", 0); // returns  5
 "Blue Whale".indexOf("Whale", 5); // returns  5
 "Blue Whale".indexOf("Whale", 7); // returns -1
@@ -96,7 +88,7 @@ When checking if a specific substring occurs within a string, the correct way to
 
 ```js
 "Blue Whale".indexOf("Blue") !== -1; // true; found 'Blue' in 'Blue Whale'
-"Blue Whale".indexOf("Bloe") !== -1; // false; no 'Bloe' in 'Blue Whale'
+"Blue Whale".indexOf("Wale") !== -1; // false; no 'Wale' in 'Blue Whale'
 ```
 
 ## Examples
@@ -118,7 +110,7 @@ console.log(str.indexOf("new")); // 6
 The following example defines two string variables.
 
 The variables contain the same string, except that the second string contains uppercase
-letters. The first {{domxref("console.log()")}} method displays `19`. But
+letters. The first {{domxref("console/log_static", "console.log()")}} method displays `19`. But
 because the `indexOf()` method is case sensitive, the string
 `"cheddar"` is not found in `myCapString`, so the second
 `console.log()` method displays `-1`.

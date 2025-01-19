@@ -1,15 +1,12 @@
 ---
 title: The MDN Content Kitchensink
 slug: MDN/Kitchensink
-tags:
-  - Kitchensink
-  - MDN Meta
+page-type: guide
 browser-compat: html.elements.video
 ---
 
-{{MDNSidebar}}
-
-> **Warning:** Don't delete this page. It's used by [mdn/yari](https://github.com/mdn/yari) for its automation.
+> [!WARNING]
+> Don't delete this page. It's used by [mdn/yari](https://github.com/mdn/yari) for its automation.
 
 ## About this page
 
@@ -20,9 +17,11 @@ Let's start with some notes…
 
 Text that uses the `<kbd>` tag: <kbd>Shift</kbd>
 
-> **Note:** Here's a block indicator note.
+> [!NOTE]
+> Here's a block indicator note.
 
-> **Warning:** Here's a block indicator warning.
+> [!WARNING]
+> Here's a block indicator warning.
 
 ## Prev/Next buttons
 
@@ -36,7 +35,7 @@ Text that uses the `<kbd>` tag: <kbd>Shift</kbd>
 
 ### Plain text
 
-```
+```plain
   ___________________________
 < I'm an expert in my field. >
   ---------------------------
@@ -50,7 +49,7 @@ Text that uses the `<kbd>` tag: <kbd>Shift</kbd>
 ### HTML
 
 ```html
-<pre>
+<pre></pre>
 ```
 
 ### JavaScript
@@ -107,12 +106,6 @@ class BookListView(generic.ListView):
     template_name = 'books/my_arbitrary_template_name_list.html'
 ```
 
-### Formal syntax
-
-_The formal syntax must be taken from the spec and added to the [MDN data repository](https://github.com/mdn/data). It is an important tool to get precise syntax information for advanced users._
-
-{{CSSSyntax("font-stretch")}}
-
 ## Interactive Examples
 
 {{EmbedInteractiveExample("pages/tabbed/abbr.html", "tabbed-shorter")}} {{EmbedInteractiveExample("pages/css/order.html")}} {{EmbedInteractiveExample("pages/js/regexp-assertions.html", "taller")}}
@@ -137,27 +130,27 @@ _The formal syntax must be taken from the spec and added to the [MDN data reposi
   <tbody>
     <tr>
       <th scope="row">
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories">Content categories</a>
+        <a href="/en-US/docs/Web/HTML/Content_categories">Content categories</a>
       </th>
       <td>
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#flow_content">Flow content</a>,
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#phrasing_content">phrasing content</a>, palpable content.
+        <a href="/en-US/docs/Web/HTML/Content_categories#flow_content">Flow content</a>,
+        <a href="/en-US/docs/Web/HTML/Content_categories#phrasing_content">phrasing content</a>, palpable content.
       </td>
     </tr>
     <tr>
       <th scope="row">Permitted content</th>
       <td>
-        <a href="/en-US/docs/Web/Guide/HTML/Content_categories#phrasing_content">Phrasing content</a>.
+        <a href="/en-US/docs/Web/HTML/Content_categories#phrasing_content">Phrasing content</a>.
       </td>
     </tr>
     <tr>
       <th scope="row">Tag omission</th>
-      <td>{{no_tag_omission}}</td>
+      <td>None, both the starting and ending tag are mandatory.</td>
     </tr>
     <tr>
       <th scope="row">Permitted parents</th>
       <td>
-        Any element that accepts <a href="/en-US/docs/Web/Guide/HTML/Content_categories#phrasing_content">phrasing content</a>.
+        Any element that accepts <a href="/en-US/docs/Web/HTML/Content_categories#phrasing_content">phrasing content</a>.
       </td>
     </tr>
     <tr>
@@ -219,7 +212,7 @@ _The formal syntax must be taken from the spec and added to the [MDN data reposi
         </p>
         <p>
           The <code>cover</code> value means that the viewport is scaled to fill the device display.
-          It is highly recommended to make use of the <a href="/en-US/docs/Web/CSS/env()">safe area inset</a> variables to
+          It is highly recommended to make use of the <a href="/en-US/docs/Web/CSS/env">safe area inset</a> variables to
           ensure that important content doesn't end up outside the display.
         </p>
       </td>
@@ -275,8 +268,13 @@ if (5 < 30 && 55 > 20 && 5 < 20 && 55 > 10) {
 
 ```html
 <div id="cr-stage"></div>
-<p>Move the rectangle with arrow keys. Green means collision, blue means no collision.</p>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crafty/0.5.4/crafty-min.js"></script>
+<p>
+  Move the rectangle with arrow keys. Green means collision, blue means no
+  collision.
+</p>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/crafty/0.5.4/crafty-min.js"></script>
 ```
 
 ```js
@@ -305,13 +303,13 @@ this.color("blue");
 
 {{EmbedLiveSample('Rect_code', '700', '300') }}
 
-{{APIRef("Bluetooth API")}}{{SeeCompatTable}}
+{{SeeCompatTable}}
 
 {{WebExtAPIRef("tabs.mutedInfo")}}
 
 ### Obsolete CSSOM interfaces {{deprecated_inline}}
 
-{{InheritanceDiagram}}
+{{InheritanceDiagram("WheelEvent")}}
 
 {{EmbedGHLiveSample("web-tech-games/index.html", '100%', 820)}}
 
@@ -322,16 +320,16 @@ The [`AvailableInWorkers`](https://github.com/mdn/yari/blob/main/kumascript/macr
 
 {{AvailableInWorkers}}
 
-- {{ARIARole("button")}}
-- {{ARIARole("checkbox")}}
-- {{ARIARole("menuitem")}}
-- {{ARIARole("menuitemcheckbox")}}
-- {{ARIARole("menuitemradio")}}
-- {{ARIARole("option")}}
-- {{ARIARole("radio")}}
-- {{ARIARole("switch")}}
-- {{ARIARole("tab")}}
-- {{ARIARole("treeitem")}}
+- [`button`](/en-US/docs/Web/Accessibility/ARIA/Roles/button_role)
+- [`checkbox`](/en-US/docs/Web/Accessibility/ARIA/Roles/checkbox_role)
+- [`menuitem`](/en-US/docs/Web/Accessibility/ARIA/Roles/menuitem_role)
+- [`menuitemcheckbox`](/en-US/docs/Web/Accessibility/ARIA/Roles/menuitemcheckbox_role)
+- [`menuitemradio`](/en-US/docs/Web/Accessibility/ARIA/Roles/menuitemradio_role)
+- [`option`](/en-US/docs/Web/Accessibility/ARIA/Roles/option_role)
+- [`radio`](/en-US/docs/Web/Accessibility/ARIA/Roles/radio_role)
+- [`switch`](/en-US/docs/Web/Accessibility/ARIA/Roles/switch_role)
+- [`tab`](/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role)
+- [`treeitem`](/en-US/docs/Web/Accessibility/ARIA/Roles/treeitem_role)
 
 <!---->
 
@@ -345,11 +343,10 @@ The [`AvailableInWorkers`](https://github.com/mdn/yari/blob/main/kumascript/macr
 
 - [MDN Web Docs Glossary](/en-US/docs/Glossary):
 
-  - {{Glossary("XHR_(XMLHttpRequest)","XMLHttpRequest")}}
+  - {{Glossary("XMLHttpRequest", "XHR")}}
 
 - [AJAX](https://en.wikipedia.org/wiki/AJAX) on Wikipedia
-- [Ajax](/en-US/docs/Web/Guide/AJAX)
-- [Ajax - Getting started](/en-US/docs/Web/Guide/AJAX/Getting_Started)
+- [Learn: Making network requests with JavaScript](/en-US/docs/Learn_web_development/Core/Scripting/Network_requests)
 - {{DOMxRef("XMLHttpRequest")}}
 - {{DOMxRef("Fetch API")}}
 - [Using Fetch API](/en-US/docs/Web/API/Fetch_API/Using_Fetch)
@@ -359,8 +356,8 @@ The [`AvailableInWorkers`](https://github.com/mdn/yari/blob/main/kumascript/macr
 
 - {{SVGElement("feGaussianBlur")}}
 - {{SVGAttr("keySplines")}} SVG attribute
-- {{htmlattrxref("dir")}}
-- {{htmlattrxref("lang")}}
+- [dir](/en-US/docs/Web/HTML/Global_attributes#dir)
+- [lang](/en-US/docs/Web/HTML/Global_attributes#lang)
 - {{cssxref(":dir")}}
 - {{cssxref("direction")}}
 

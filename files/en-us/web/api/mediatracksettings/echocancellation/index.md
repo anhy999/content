@@ -1,19 +1,9 @@
 ---
-title: MediaTrackSettings.echoCancellation
+title: "MediaTrackSettings: echoCancellation property"
+short-title: echoCancellation
 slug: Web/API/MediaTrackSettings/echoCancellation
 page-type: web-api-instance-property
-tags:
-  - API
-  - Audio
-  - Media
-  - Media Capture and Streams API
-  - Media Streams API
-  - MediaTrackSettings
-  - Property
-  - Reference
-  - Settings
-  - echoCancellation
-browser-compat: api.MediaTrackSettings.echoCancellation
+browser-compat: api.MediaStreamTrack.applyConstraints.echoCancellation_constraint
 ---
 
 {{APIRef("Media Capture and Streams")}}
@@ -49,7 +39,7 @@ functionality enabled or `false` if echo cancellation is disabled.
 
 ## Examples
 
-See {{SectionOnPage("/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints", "Example: Constraint exerciser")}} for an example.
+See the [Constraint exerciser](/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints#example_constraint_exerciser) example.
 
 ## Specifications
 

@@ -1,12 +1,9 @@
 ---
-title: '<big>: The Bigger Text element'
+title: "<big>: The Bigger Text element"
 slug: Web/HTML/Element/big
-tags:
-  - Element
-  - HTML
-  - Deprecated
-  - Reference
-  - Web
+page-type: html-element
+status:
+  - deprecated
 browser-compat: html.elements.big
 ---
 
@@ -14,7 +11,8 @@ browser-compat: html.elements.big
 
 The **`<big>`** [HTML](/en-US/docs/Web/HTML) deprecated element renders the enclosed text at a font size one level larger than the surrounding text (`medium` becomes `large`, for example). The size is capped at the browser's maximum permitted font size.
 
-> **Warning:** This element has been removed from the specification and shouldn't be used anymore. Use the CSS {{cssxref("font-size")}} property to adjust the font size.
+> [!WARNING]
+> This element has been removed from the specification and shouldn't be used anymore. Use the CSS {{cssxref("font-size")}} property to adjust the font size.
 
 ## Attributes
 
@@ -69,6 +67,8 @@ This example uses the CSS {{cssxref("font-size")}} property to increase the font
 ## DOM interface
 
 This element implements the {{domxref('HTMLElement')}} interface.
+
+<!-- ## Technical summary -->
 
 ## Specifications
 

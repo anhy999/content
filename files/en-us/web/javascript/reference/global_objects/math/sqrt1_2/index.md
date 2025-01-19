@@ -1,21 +1,25 @@
 ---
 title: Math.SQRT1_2
 slug: Web/JavaScript/Reference/Global_Objects/Math/SQRT1_2
-tags:
-  - JavaScript
-  - Math
-  - Property
-  - Reference
+page-type: javascript-static-data-property
 browser-compat: javascript.builtins.Math.SQRT1_2
 ---
 
 {{JSRef}}
 
-The **`Math.SQRT1_2`** property represents the square root of 1/2 which is approximately 0.707:
+The **`Math.SQRT1_2`** static data property represents the square root of 1/2, which is approximately 0.707.
 
-<math display="block"><semantics><mrow><mi>𝙼𝚊𝚝𝚑.𝚂𝚀𝚁𝚃𝟷_𝟸</mi><mo>=</mo><msqrt><mfrac><mn>1</mn><mn>2</mn></mfrac></msqrt><mo>≈</mo><mn>0.707</mn></mrow><annotation encoding="TeX">\mathtt{\mi{Math.SQRT1_2}} = \sqrt{\frac{1}{2}} \approx 0.707</annotation></semantics></math>
+{{EmbedInteractiveExample("pages/js/math-sqrt1_2.html", "shorter")}}
 
-{{EmbedInteractiveExample("pages/js/math-sqrt1_2.html", "shorter")}}{{js_property_attributes(0, 0, 0)}}
+## Value
+
+<!-- prettier-ignore-start -->
+<math display="block">
+  <semantics><mrow><mi>𝙼𝚊𝚝𝚑.𝚂𝚀𝚁𝚃𝟷_𝟸</mi><mo>=</mo><msqrt><mfrac><mn>1</mn><mn>2</mn></mfrac></msqrt><mo>≈</mo><mn>0.707</mn></mrow><annotation encoding="TeX">\mathtt{Math.SQRT1_2} = \sqrt{\frac{1}{2}} \approx 0.707</annotation></semantics>
+</math>
+<!-- prettier-ignore-end -->
+
+{{js_property_attributes(0, 0, 0)}}
 
 ## Description
 

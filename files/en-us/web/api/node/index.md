@@ -2,9 +2,6 @@
 title: Node
 slug: Web/API/Node
 page-type: web-api-interface
-tags:
-  - Interface
-  - Reference
 browser-compat: api.Node
 ---
 
@@ -59,7 +56,7 @@ _In addition to the properties below, `Node` inherits properties from its parent
   - : Returns a string containing the name of the `Node`. The
     structure of the name will differ with the node type. E.g. An
     {{DOMxRef("HTMLElement")}} will contain the name of the corresponding tag, like
-    `'audio'` for an {{DOMxRef("HTMLAudioElement")}}, a {{DOMxRef("Text")}}
+    `'AUDIO'` for an {{DOMxRef("HTMLAudioElement")}}, a {{DOMxRef("Text")}}
     node will have the `'#text'` string, or a {{DOMxRef("Document")}} node will
     have the `'#document'` string.
 - {{DOMxRef("Node.nodeType")}} {{ReadOnlyInline}}
@@ -148,13 +145,6 @@ _In addition to the methods below, `Node` inherits methods from its parent, {{DO
   - : Replaces one child `Node` of the current one with the second one given
     in parameter.
 
-### Obsolete methods
-
-- {{DOMxRef("Node.isSupported()")}} {{deprecated_inline}}
-  - : Returns `true` or `false` containing the result of a test whether the DOM
-    implementation implements a specific feature and this feature is supported by the
-    specific node.
-
 ## Examples
 
 ### Remove all children nested within a node
@@ -188,7 +178,7 @@ function eachNode(rootNode, callback) {
     const nodes = [];
     eachNode(rootNode, (node) => {
       nodes.push(node);
-    })
+    });
     return nodes;
   }
 
@@ -249,7 +239,7 @@ function grep(parentNode, pattern) {
     }
 
     if (typeof pattern === "string" && node.textContent.includes(pattern)) {
-      matches.push(node)
+      matches.push(node);
     } else if (pattern.test(node.textContent)) {
       if (!pattern.global) {
         endScan = true;
@@ -258,7 +248,7 @@ function grep(parentNode, pattern) {
         matches.push(node);
       }
     }
-  })
+  });
 
   return matches;
 }

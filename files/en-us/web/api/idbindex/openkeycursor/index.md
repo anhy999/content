@@ -1,20 +1,12 @@
 ---
-title: IDBIndex.openKeyCursor()
+title: "IDBIndex: openKeyCursor() method"
+short-title: openKeyCursor()
 slug: Web/API/IDBIndex/openKeyCursor
 page-type: web-api-instance-method
-tags:
-  - API
-  - Database
-  - IDBIndex
-  - IndexedDB
-  - Method
-  - Reference
-  - Storage
-  - openKeyCursor
 browser-compat: api.IDBIndex.openKeyCursor
 ---
 
-{{ APIRef("IndexedDB") }}
+{{ APIRef("IndexedDB") }} {{AvailableInWorkers}}
 
 The **`openKeyCursor()`** method of the
 {{domxref("IDBIndex")}} interface returns an {{domxref("IDBRequest")}} object, and, in
@@ -26,11 +18,10 @@ specified direction.
 
 If the key range is not specified or is null, then the range includes all the keys.
 
-> **Note:** Cursors returned by `openKeyCursor()` do not
+> [!NOTE]
+> Cursors returned by `openKeyCursor()` do not
 > make the referenced value available as [`IDBIndex.openCursor`](/en-US/docs/Web/API/IDBIndex/openCursor) does.
 > This makes obtaining a list of keys much more efficient.
-
-{{AvailableInWorkers}}
 
 ## Syntax
 
@@ -52,8 +43,12 @@ openKeyCursor(range, direction)
 
 ### Return value
 
-An {{domxref("IDBRequest")}} object on which subsequent events related to this
-operation are fired.
+An {{domxref("IDBRequest")}} object on which subsequent events related to this operation are fired.
+
+If the operation is successful, the value of the request's {{domxref("IDBRequest.result", "result")}} property is:
+
+- an {{domxref("IDBCursor")}} object pointing at the first record matching the given query
+- `null` if no matching records were found.
 
 ### Exceptions
 
@@ -82,26 +77,28 @@ corresponding primary key of the referenced record into an HTML table.
 
 ```js
 function displayDataByIndex() {
-  tableEntry.innerHTML = '';
-  const transaction = db.transaction(['contactsList'], 'readonly');
-  const objectStore = transaction.objectStore('contactsList');
+  tableEntry.textContent = "";
+  const transaction = db.transaction(["contactsList"], "readonly");
+  const objectStore = transaction.objectStore("contactsList");
 
-  const myIndex = objectStore.index('lName');
+  const myIndex = objectStore.index("lName");
 
   myIndex.openKeyCursor().onsuccess = (event) => {
     const cursor = event.target.result;
     if (cursor) {
-      const tableRow = document.createElement('tr');
-      tableRow.innerHTML = `<td>${cursor.key}</td>`
-                         + `<td>${cursor.primaryKey}</td>`;
+      const tableRow = document.createElement("tr");
+      tableRow.appendChild(document.createElement("td")).textContent =
+        cursor.key;
+      tableRow.appendChild(document.createElement("td")).textContent =
+        cursor.primaryKey;
       tableEntry.appendChild(tableRow);
 
       cursor.continue();
     } else {
-      console.log('All last names displayed.');
+      console.log("All last names displayed.");
     }
   };
-};
+}
 ```
 
 ## Specifications

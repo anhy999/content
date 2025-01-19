@@ -1,21 +1,8 @@
 ---
-title: CanvasRenderingContext2D.getImageData()
+title: "CanvasRenderingContext2D: getImageData() method"
+short-title: getImageData()
 slug: Web/API/CanvasRenderingContext2D/getImageData
 page-type: web-api-instance-method
-tags:
-  - API
-  - Canvas
-  - Canvas API
-  - CanvasRenderingContext2D
-  - Cut
-  - Graphics
-  - Image
-  - ImageData
-  - Method
-  - Reference
-  - copy
-  - getImageData
-  - img
 browser-compat: api.CanvasRenderingContext2D.getImageData
 ---
 
@@ -30,7 +17,8 @@ This method is not affected by the canvas's transformation matrix. If the specif
 rectangle extends outside the bounds of the canvas, the pixels outside the canvas are
 transparent black in the returned `ImageData` object.
 
-> **Note:** Image data can be painted onto a canvas using the
+> [!NOTE]
+> Image data can be painted onto a canvas using the
 > {{domxref("CanvasRenderingContext2D.putImageData()", "putImageData()")}} method.
 
 You can find more information about `getImageData()` and general
@@ -127,7 +115,7 @@ context.fillRect(0, 0, 10, 10);
 
 // Get ImageData converted to sRGB
 const imageData = context.getImageData(0, 0, 1, 1, { colorSpace: "srgb" });
-console.log(imageData.colorSpace);  // "srgb"
+console.log(imageData.colorSpace); // "srgb"
 ```
 
 ## Specifications
